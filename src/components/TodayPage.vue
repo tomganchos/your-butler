@@ -1,6 +1,10 @@
 <template>
     <div>
-      ТУТ СПИСОК ДЕЛ
+      <div>
+        <h1>
+          Список дел
+        </h1>
+      </div>
     </div>
 </template>
 
@@ -11,5 +15,8 @@
 </script>
 
 <style scoped>
-
+  h1 {
+    font-size: x-large;
+    color: #f44336;
+  }
 </style>

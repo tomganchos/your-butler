@@ -45,16 +45,21 @@
   .menu ul li a {
     display: block;
     width: 100%;
-    height: 100%;
+    height: 40px;
+    /*color: #333;*/
   }
   svg {
-    height: 35px !important;
-    width: 35px !important;
+    height: 25px !important;
+    width: 25px !important;
     padding: 5px;
   }
-  .router-link-exact-active {
-    background-color: gold;
-    color: #4caf50;
+  svg path {
+    color: #333;
+  }
+
+  .router-link-exact-active svg path {
+    /*background-color: gold;*/
+    color: #f44336;
   }
 
 </style>
