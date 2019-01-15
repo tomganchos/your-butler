@@ -1,4 +1,4 @@
-#Sun Dec 23 23:04:13 MSK 2018
+#Sun Jan 13 23:56:03 MSK 2019
 base.0=C\:\\Projects\\WebStorm\\your-butler\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
 renamed.0=classes.dex

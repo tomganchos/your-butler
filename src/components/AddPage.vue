@@ -1,54 +1,83 @@
 <template>
     <div>
-      <div style="display: flex">
-        <img class="image image-cover" src="../assets/bg.png" alt="фон">
-      </div>
+      <!--<div style="display: flex">-->
+        <!--<img class="image image-cover" src="../assets/bg.png" alt="фон">-->
+      <!--</div>-->
       <div>
         <h1>
         Добавление
         </h1>
       </div>
-      <div style="display: flex; flex-direction: column">
+      <div class="button-list">
         <!--<h2>-->
           <!--Добавление задач:-->
         <!--</h2>-->
-        <div class="button">
-          <div style="display: flex; align-items: center">
+        <div class="button" @click="addButton('todo')">
+          <!--<router-link to="/add-todo">-->
+          <div class="header">
             <font-awesome-icon icon="check-square" />
-            <strong>Добавление задачи</strong>
+            <strong class="header-text">Добавление задачи</strong>
           </div>
           <div>
             <span class="description">TODO на день, неделю, на будущее. Добавление подзадач</span>
           </div>
+          <!--</router-link>-->
         </div>
 
-        <div class="button">
-          <div style="display: flex; align-items: center">
+        <div class="button" @click="addButton('thumbs-up')">
+          <div class="header">
             <font-awesome-icon icon="thumbs-up" />
-            <strong>Добавление "на потом"</strong>
+            <strong class="header-text">Добавление "на потом"</strong>
           </div>
           <div>
             <span class="description">Кино, сериал, песня, альбом, игра, книга, статья и т.д.</span>
           </div>
         </div>
 
-        <div class="button">
-          <div style="display: flex; align-items: center">
+        <div class="button" @click="addButton('people')">
+          <div class="header">
             <font-awesome-icon icon="user" />
-            <strong style="margin-left: 10px">Добавление информации о человеке</strong>
+            <strong class="header-text">Добавление информации о человеке</strong>
           </div>
           <div>
             <span class="description">Дни рождения людей, которых нет в социальных сетях</span>
           </div>
         </div>
       </div>
+      <div class="my-router" style="display: none">
+        <add-todo></add-todo>
+      </div>
     </div>
 </template>
 
 <script>
-    export default {
-        name: "AddPage"
+  import AddTodo from "./AddTodo";
+  export default {
+    name: "AddPage",
+    components: {AddTodo},
+    methods: {
+      addButton(type) {
+        for (let i = 0; i < document.getElementsByClassName('button').length; i++) {
+          document.getElementsByClassName('button')[i].className = 'button little';
+        }
+        if (type === 'todo') {
+          document.getElementsByClassName('button')[0].className = 'button little chosen';
+          document.getElementsByClassName('button')[1].className = 'button little';
+          document.getElementsByClassName('button')[2].className = 'button little';
+          document.querySelector('.my-router').style.display = 'block';
+        } else if (type === 'thumbs-up') {
+          document.getElementsByClassName('button')[0].className = 'button little';
+          document.getElementsByClassName('button')[1].className = 'button little chosen';
+          document.getElementsByClassName('button')[2].className = 'button little';
+        } else if (type === 'people') {
+          document.getElementsByClassName('button')[0].className = 'button little';
+          document.getElementsByClassName('button')[1].className = 'button little';
+          document.getElementsByClassName('button')[2].className = 'button little chosen';
+        }
+        document.getElementsByClassName('button-list')[0].className = 'button-list little';
+      }
     }
+  }
 </script>
 
 <style scoped>
@@ -73,6 +102,28 @@
     color: #333333;
     margin: 0;
   }
+  .button-list {
+    display: flex;
+    flex-direction: column;
+    transition: 0.4s ease-in-out;
+    -ms-transition: 0.4s ease-in-out;
+    -moz-transition: 0.4s ease-in-out;
+    -webkit-transition: 0.4s ease-in-out;
+  }
+  .button-list.little {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: space-around;
+    align-items: flex-start;
+    transition: 0.4s ease-in-out;
+    -ms-transition: 0.4s ease-in-out;
+    -moz-transition: 0.4s ease-in-out;
+    -webkit-transition: 0.4s ease-in-out;
+  }
+  .button-list.little .header-text, .button-list.little .description {
+    display: none;
+  }
   .button span {
     margin-top: 5px;
     display: flex;
@@ -83,19 +134,61 @@
     text-align: left;
     margin-left: 10px;
   }
+  .button .header {
+    display: flex; align-items: center
+  }
+  .button .header .header-text {
+    margin-left: 10px;
+  }
   .button {
     display: block;
     padding: 10px 10px 15px 10px;
     border-radius: 10px;
     margin: 10px;
-    background-color: #F4433611;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    background-color: rgba(244, 67, 54, .2);
+    /*box-shadow: 0 0 10px rgba(0,0,0,0.3);*/
     cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.4s ease-out;
+    -ms-transition: opacity 0.4s ease-out;
+    -moz-transition: opacity 0.4s ease-out;
+    -webkit-transition: opacity 0.4s ease-out;
     /*border: 1px #f4433670 solid;*/
   }
   .button:hover, .button:focus, .button:active,
   .button:hover svg path, .button:focus svg path, .button:active svg path {
     color: #f44336;
-    background-color: #F4433621;
+    background-color: rgba(244, 67, 54, .35);
   }
+
+  .button.little {
+    /*display: flex;*/
+  }
+  .button.little .header-text {
+    opacity: 0;
+    transition: opacity 0.4s ease-in;
+    -ms-transition: opacity 0.4s ease-in;
+    -moz-transition: opacity 0.4s ease-in;
+    -webkit-transition: opacity 0.4s ease-in;
+  }
+  .button.little .description {
+    display: none;
+    /*opacity: 0;*/
+    /*transition: opacity 0.4s ease-in;*/
+    /*-ms-transition: opacity 0.4s ease-in;*/
+    /*-moz-transition: opacity 0.4s ease-in;*/
+    /*-webkit-transition: opacity 0.4s ease-in;*/
+  }
+  .button.little.chosen {
+    border-radius: 10px 10px 0 0;
+    padding-bottom: 25px;
+    margin-bottom: 0;
+  }
+
+  /*@media screen and (max-width: 600px) {*/
+    /*.button {*/
+      /*background-color: #42b983;*/
+    /*}*/
+  /*}*/
+
 </style>
