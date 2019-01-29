@@ -11,19 +11,54 @@
       </span>
     </div>
     <div class="scroll-container">
+
+      <label>Тематика</label>
       <div>
-        <label>Тематика</label>
         <select class="form" v-model="newWishList.type">
           <option v-for="type in types" value="type.value">{{type.text}}</option>
         </select>
       </div>
-      <div>
-        <label>Название</label>
+
+      <div class="ui fluid selection dropdown">
+        <input type="hidden" name="user">
+        <i class="dropdown icon"></i>
+        <div class="default text">Select Friend</div>
+        <div class="menu">
+          <div class="item" data-value="jenny">
+            <img class="ui mini avatar image" src="/images/avatar/small/jenny.jpg">
+            Jenny Hess
+          </div>
+          <div class="item" data-value="elliot">
+            <img class="ui mini avatar image" src="/images/avatar/small/elliot.jpg">
+            Elliot Fu
+          </div>
+          <div class="item" data-value="stevie">
+            <img class="ui mini avatar image" src="/images/avatar/small/stevie.jpg">
+            Stevie Feliciano
+          </div>
+          <div class="item" data-value="christian">
+            <img class="ui mini avatar image" src="/images/avatar/small/christian.jpg">
+            Christian
+          </div>
+          <div class="item" data-value="matt">
+            <img class="ui mini avatar image" src="/images/avatar/small/matt.jpg">
+            Matt
+          </div>
+          <div class="item" data-value="justen">
+            <img class="ui mini avatar image" src="/images/avatar/small/justen.jpg">
+            Justen Kitsune
+          </div>
+        </div>
+      </div>
+
+      <label>Название</label>
+      <div class="ui fluid input">
         <input v-model="newWishList.text">
       </div>
-      <div>
-        <label>Описание</label>
-        <textarea v-model="newWishList.description"></textarea>
+
+      <label>Описание</label>
+      <div class="ui form text">
+        <textarea rows="2" v-model="newWishList.description"></textarea>
       </div>
     </div>
     <div class="submit-button">
@@ -33,6 +68,8 @@
 </template>
 
 <script>
+  import '../assets/semantic/jquery-3.3.1.min';
+  import '../assets/semantic/semantic';
   export default {
     name: "AddWishList",
     data() {
@@ -92,9 +129,13 @@
       }
     }
   }
+  $('.ui.dropdown')
+    .dropdown()
+  ;
 </script>
 
 <style scoped>
+  @import '../assets/semantic/semantic.min.css';
   svg path {
     color: #dfdfdf;
     padding: 0;
@@ -130,6 +171,7 @@
     bottom: 10px;
     left: 10px;
     right: 10px;
+    display: flex;
   }
 
   select {
@@ -173,5 +215,19 @@
     border-radius: 0;
     transition: ease-in-out 0.15s;
   }
-
+  .ui.input {
+    /*display: inherit;*/
+    margin-top: 5px;
+    margin-bottom: 15px;
+  }
+  .ui.input input {
+    display: flex;
+    padding: 5px 10px;
+    height: 19px;
+  }
+  .ui.form {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    display: flex;
+  }
 </style>
