@@ -25,7 +25,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #dfdfdf;
+
+}
+textarea:focus, input:focus, button, button:focus, button:hover {
+  outline: none;
 }
   .menu {
     position: absolute;
@@ -54,12 +58,12 @@
     padding: 5px;
   }
   svg path {
-    color: #333;
+    color: #dfdfdf;
   }
 
   .router-link-exact-active svg path {
     /*background-color: gold;*/
-    color: #f44336;
+    color: #9b52d9;
   }
 
 </style>

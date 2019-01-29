@@ -17,6 +17,6 @@
 <style scoped>
   h1 {
     font-size: x-large;
-    color: #f44336;
+    color: #9b52d9;
   }
 </style>

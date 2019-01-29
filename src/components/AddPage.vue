@@ -40,41 +40,51 @@
             <strong class="header-text">Добавление информации о человеке</strong>
           </div>
           <div>
-            <span class="description">Дни рождения людей, которых нет в социальных сетях</span>
+            <span class="description">Дни рождения и другие события людей, которых нет в социальных сетях</span>
           </div>
         </div>
       </div>
       <div class="my-router" style="display: none">
         <add-todo></add-todo>
       </div>
+      <div class="my-router" style="display: none">
+        <add-wish-list></add-wish-list>
+      </div>
+      <div class="my-router" style="display: none">
+        <add-people></add-people>
+      </div>
     </div>
 </template>
 
 <script>
   import AddTodo from "./AddTodo";
+  import AddWishList from "./AddWishList";
+  import AddPeople from "./AddPeople";
   export default {
     name: "AddPage",
-    components: {AddTodo},
+    components: {AddPeople, AddWishList, AddTodo},
     methods: {
       addButton(type) {
         for (let i = 0; i < document.getElementsByClassName('button').length; i++) {
           document.getElementsByClassName('button')[i].className = 'button little';
         }
         if (type === 'todo') {
-          document.getElementsByClassName('button')[0].className = 'button little chosen';
-          document.getElementsByClassName('button')[1].className = 'button little';
-          document.getElementsByClassName('button')[2].className = 'button little';
-          document.querySelector('.my-router').style.display = 'block';
+          // document.getElementsByClassName('button')[0].className = 'button little chosen';
+          // document.getElementsByClassName('button')[1].className = 'button little';
+          // document.getElementsByClassName('button')[2].className = 'button little';
+          document.querySelectorAll('.my-router')[0].style.display = 'block';
         } else if (type === 'thumbs-up') {
-          document.getElementsByClassName('button')[0].className = 'button little';
-          document.getElementsByClassName('button')[1].className = 'button little chosen';
-          document.getElementsByClassName('button')[2].className = 'button little';
+          // document.getElementsByClassName('button')[0].className = 'button little';
+          // document.getElementsByClassName('button')[1].className = 'button little chosen';
+          // document.getElementsByClassName('button')[2].className = 'button little';
+          document.querySelectorAll('.my-router')[1].style.display = 'block';
         } else if (type === 'people') {
-          document.getElementsByClassName('button')[0].className = 'button little';
-          document.getElementsByClassName('button')[1].className = 'button little';
-          document.getElementsByClassName('button')[2].className = 'button little chosen';
+          // document.getElementsByClassName('button')[0].className = 'button little';
+          // document.getElementsByClassName('button')[1].className = 'button little';
+          // document.getElementsByClassName('button')[2].className = 'button little chosen';
+          document.querySelectorAll('.my-router')[2].style.display = 'block';
         }
-        document.getElementsByClassName('button-list')[0].className = 'button-list little';
+        // document.getElementsByClassName('button-list')[0].className = 'button-list little';
       }
     }
   }
@@ -95,7 +105,7 @@
   }
   h1 {
     font-size: x-large;
-    color: #f44336;
+    color: #9b52d9;
   }
   h2 {
     font-size: large;
@@ -145,7 +155,7 @@
     padding: 10px 10px 15px 10px;
     border-radius: 10px;
     margin: 10px;
-    background-color: rgba(244, 67, 54, .2);
+    background-color: rgba(173, 90, 242, 0.2);
     /*box-shadow: 0 0 10px rgba(0,0,0,0.3);*/
     cursor: pointer;
     opacity: 1;
@@ -157,8 +167,8 @@
   }
   .button:hover, .button:focus, .button:active,
   .button:hover svg path, .button:focus svg path, .button:active svg path {
-    color: #f44336;
-    background-color: rgba(244, 67, 54, .35);
+    color: #9b52d9;
+    background-color: rgba(155, 82, 217, 0.35);
   }
 
   .button.little {
