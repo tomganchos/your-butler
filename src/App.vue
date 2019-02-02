@@ -55,7 +55,7 @@ textarea:focus, input:focus, button, button:focus, button:hover {
   svg {
     height: 25px !important;
     width: 25px !important;
-    padding: 5px;
+    /*padding: 5px;*/
   }
   svg path {
     color: #dfdfdf;

@@ -36,3 +36,6 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 3. Добавлять списки "на потом" (кино, альбом, продукты)
 4. Добавлять информацию о людях (дни рождения)
 5. Добавлять подзадачи
+
+
+

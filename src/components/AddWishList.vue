@@ -12,41 +12,21 @@
     </div>
     <div class="scroll-container">
 
-      <label>Тематика</label>
-      <div>
-        <select class="form" v-model="newWishList.type">
-          <option v-for="type in types" value="type.value">{{type.text}}</option>
-        </select>
-      </div>
+      <!--<label>Тематика</label>-->
+      <!--<div>-->
+        <!--<select class="form" v-model="newWishList.type">-->
+          <!--<option v-for="type in types" value="type.value">{{type.text}}</option>-->
+        <!--</select>-->
+      <!--</div>-->
 
       <div class="ui fluid selection dropdown">
         <input type="hidden" name="user">
         <i class="dropdown icon"></i>
-        <div class="default text">Select Friend</div>
+        <div class="default text">Тематика</div>
         <div class="menu">
-          <div class="item" data-value="jenny">
-            <img class="ui mini avatar image" src="/images/avatar/small/jenny.jpg">
-            Jenny Hess
-          </div>
-          <div class="item" data-value="elliot">
-            <img class="ui mini avatar image" src="/images/avatar/small/elliot.jpg">
-            Elliot Fu
-          </div>
-          <div class="item" data-value="stevie">
-            <img class="ui mini avatar image" src="/images/avatar/small/stevie.jpg">
-            Stevie Feliciano
-          </div>
-          <div class="item" data-value="christian">
-            <img class="ui mini avatar image" src="/images/avatar/small/christian.jpg">
-            Christian
-          </div>
-          <div class="item" data-value="matt">
-            <img class="ui mini avatar image" src="/images/avatar/small/matt.jpg">
-            Matt
-          </div>
-          <div class="item" data-value="justen">
-            <img class="ui mini avatar image" src="/images/avatar/small/justen.jpg">
-            Justen Kitsune
+          <div class="item" v-for="type in types" :data-value="type.value">
+            <font-awesome-icon :icon="type.icon" />
+            {{type.text}}
           </div>
         </div>
       </div>
@@ -68,8 +48,9 @@
 </template>
 
 <script>
-  import '../assets/semantic/jquery-3.3.1.min';
-  import '../assets/semantic/semantic';
+  // import '../assets/semantic/jquery-3.3.1.min';
+  // import '../assets/semantic/semantic.min.js';
+  // import '../assets/semantic/semantic.min.css';
   export default {
     name: "AddWishList",
     data() {
@@ -79,35 +60,35 @@
           {
             value: 'movie',
             text: 'Кино',
-            icon: ''
+            icon: 'film'
           }, {
             value: 'book',
             text: 'Книга',
-            icon: ''
+            icon: 'book'
           }, {
             value: 'site',
             text: 'Ссылка',
-            icon: ''
+            icon: 'newspaper'
           }, {
             value: 'music',
             text: 'Музыка',
-            icon: ''
+            icon: 'music'
           }, {
             value: 'game',
             text: 'Игра',
-            icon: ''
+            icon: 'gamepad'
           }, {
             value: 'cook',
             text: 'Рецепт',
-            icon: ''
+            icon: 'utensils'
           }, {
             value: 'place',
             text: 'Место',
-            icon: ''
+            icon: 'map-marked-alt'
           }, {
             value: 'other',
             text: 'Другое',
-            icon: ''
+            icon: 'file-alt'
           }
         ],
         newWishList: {
@@ -119,6 +100,11 @@
         }
       }
     },
+    // mounted: function () {
+    //   $('.ui.dropdown')
+    //     .dropdown()
+    //   ;
+    // },
     methods: {
       addWishList() {
         this.submitButtonText = 'Добавлено';
@@ -129,13 +115,11 @@
       }
     }
   }
-  $('.ui.dropdown')
-    .dropdown()
-  ;
+
 </script>
 
 <style scoped>
-  @import '../assets/semantic/semantic.min.css';
+  /*@import '../assets/semantic/semantic.min.css';*/
   svg path {
     color: #dfdfdf;
     padding: 0;
@@ -223,11 +207,43 @@
   .ui.input input {
     display: flex;
     padding: 5px 10px;
-    height: 19px;
+    /*height: 19px;*/
   }
   .ui.form {
     margin-top: 5px;
     margin-bottom: 15px;
     display: flex;
+  }
+
+  .ui.selection.dropdown {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    padding: 5px 10px;
+    display: flex;
+    /*height: 19px;*/
+    /*min-height: 0;*/
+    width: auto;
+  }
+  .dropdown .dropdown.icon {
+    padding: 6px 10px !important;
+  }
+  .menu.transition.visible {
+    min-height: max-content;
+  }
+  .dropdown .text, .dropdown .item {
+    display: flex;
+    align-items: center;
+  }
+  .dropdown .item {
+    display: flex !important;
+    align-items: center;
+    padding: 5px 10px !important;
+  }
+  .dropdown svg {
+    margin-right: 5px;
+    padding: 4px;
+  }
+  .dropdown svg path {
+    color: #333333;
   }
 </style>

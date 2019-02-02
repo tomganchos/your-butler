@@ -27,6 +27,14 @@
         <input type="date" v-model="newPeople.date">
       </div>
 
+
+      <div>
+        <sui-button basic primary>Primary</sui-button>
+        <sui-button basic secondary>Secondary</sui-button>
+        <sui-button basic positive>Positive</sui-button>
+        <sui-button basic negative>Negative</sui-button>
+      </div>
+
     </div>
     <div class="submit-button">
       <button @click="addPeople()">{{submitButtonText}}</button>
@@ -35,8 +43,9 @@
 </template>
 
 <script>
-  import '../assets/semantic/jquery-3.3.1.min';
-  import '../assets/semantic/semantic';
+
+  // import '../assets/semantic/jquery-3.3.1.min';
+  // import '../assets/semantic/semantic';
 
   export default {
     name: "AddPeople",
@@ -79,7 +88,7 @@
 </script>
 
 <style scoped>
-  @import '../assets/semantic/semantic.min.css';
+  /*@import '../assets/semantic/semantic.min.css';*/
   svg path {
     color: #dfdfdf;
     padding: 0;
@@ -137,31 +146,33 @@
     right: 10px;
     display: flex;
   }
-  button {
-    background-color: #9b52d9;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-family: 'Roboto', 'Avenir', Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    width: 100%;
-    box-shadow: 0 0 10px #333333 ;
-    transition: ease-in-out 0.15s;
-    height: 30px;
-  }
+  /*button {*/
+    /*background-color: #9b52d9;*/
+    /*color: #fff;*/
+    /*border: none;*/
+    /*padding: 5px 10px;*/
+    /*border-radius: 15px;*/
+    /*font-family: 'Roboto', 'Avenir', Helvetica, Arial, sans-serif;*/
+    /*font-size: 16px;*/
+    /*width: 100%;*/
+    /*box-shadow: 0 0 10px #333333 ;*/
+    /*transition: ease-in-out 0.15s;*/
+    /*height: 30px;*/
+  /*}*/
   /*button:focus, button:hover {*/
   /*padding: 10px 20px;*/
   /*height: 50px;*/
   /*transition: ease-in-out 0.15s;*/
   /*}*/
-  button:active, button:focus {
-    height: 100vh;
-    margin: -10px;
-    width: calc(100% + 20px);
-    border-radius: 0;
-    transition: ease-in-out 0.15s;
-  }
+
+
+  /*button:active, button:focus {*/
+    /*height: 100vh;*/
+    /*margin: -10px;*/
+    /*width: calc(100% + 20px);*/
+    /*border-radius: 0;*/
+    /*transition: ease-in-out 0.15s;*/
+  /*}*/
   .ui.input {
     /*display: inherit;*/
     margin-top: 5px;
@@ -170,6 +181,6 @@
   .ui.input input {
     display: flex;
     padding: 5px 10px;
-    height: 19px;
+    /*height: 19px;*/
   }
 </style>
