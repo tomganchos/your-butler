@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="header-container">
-      <strong>
+      <strong class="header-text">
         Добавление задачи
       </strong>
       <span>
@@ -11,10 +11,36 @@
       </span>
     </div>
     <div class="scroll-container">
-      <div>
-        <label>Название задачи</label>
-        <input class="form" v-model="newTodo.text" placeholder="Задача ">
+
+
+      <div class="ui fluid input">
+        <input v-model="newTodo.text" placeholder="Задача">
       </div>
+
+      <sui-dropdown
+        placeholder="На день / неделю / будущее"
+        selection
+        :options="selectTypes"
+        v-model="newTodo.type"
+      />
+
+      <div class="ui fluid selection dropdown">
+        <input type="hidden" name="user">
+        <i class="dropdown icon"></i>
+        <div class="default text">На день / неделю / будущее</div>
+        <div class="menu">
+          <div class="item" data-value="day">
+            На определённый день
+          </div>
+          <div class="item" data-value="week">
+            На всю неделю
+          </div>
+          <div class="item" data-value="future">
+            На неопределённое будущее
+          </div>
+        </div>
+      </div>
+
       <div>
         <label>Задача на день/неделю/будущее</label>
         <select class="form" v-model="newTodo.type">
@@ -57,7 +83,18 @@
           description: '',
           done: false
         },
-        storage: []
+        storage: [],
+
+        selectTypes: [{
+          text: 'На определённый день',
+          value: 'day',
+        }, {
+          text: 'На всю неделю',
+          value: 'week',
+        }, {
+          text: 'На неопределённое будущее',
+          value: 'future',
+        }],
       }
     },
     methods: {
@@ -123,21 +160,34 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     font-size: large;
+  }
+  .header-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .header-container svg {
     padding: 0;
   }
   .scroll-container {
-    overflow-y: scroll;
-  }
-  .form {
-    padding: 5px;
     display: flex;
-    width: calc(100% - 15px);
-    margin-top: 5px;
+    flex-direction: column;
+    flex-grow: 1;
   }
+  .scroll-container input {
+    display: block;
+    margin-top: 5px;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  /*.form {*/
+    /*padding: 5px;*/
+    /*display: flex;*/
+    /*width: calc(100% - 15px);*/
+    /*margin-top: 5px;*/
+  /*}*/
   select.form {
     width: 100%;
     border-style: inset;
@@ -168,6 +218,11 @@
     width: 100%;
     margin-top: 5px;
     height: 40px;
+  }
+  .menu.visible {
+    z-index: 1000;
+    height: max-content;
+    display: block;
   }
 
 </style>
