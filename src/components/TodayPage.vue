@@ -75,6 +75,7 @@
   h1 {
     font-size: x-large;
     color: #9b52d9;
+    padding: 10px;
   }
   .todo-list {
     text-align: left;

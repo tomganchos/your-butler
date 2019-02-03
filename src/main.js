@@ -19,6 +19,7 @@ library.add(faCoffee, faPlusCircle, faClipboardList, faCalendarAlt, faHeart, faU
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.use(SuiVue);
+Vue.use(require('vue-moment'));
 
 Vue.config.productionTip = false;
 

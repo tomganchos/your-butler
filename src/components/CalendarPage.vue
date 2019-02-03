@@ -11,7 +11,7 @@
         <sui-accordion exclusive>
           <sui-accordion-title>
             <sui-icon name="dropdown" />
-            <strong>На определённый день</strong>
+            <strong>Задачи на день</strong>
           </sui-accordion-title>
           <sui-accordion-content>
             <div class="todo-list" v-for="(todo, index) in todoListDay">
@@ -27,7 +27,7 @@
                     <strong>{{todo.text}}</strong>
                   </sui-accordion-title>
                   <sui-accordion-content>
-                    <div class="title-strong"><span>{{todo.date}}</span></div>
+                    <div class="title-strong"><span>{{todo.date | moment('DD.MM.YYYY')}}</span></div>
                     <div class="title-span"><span>{{todo.description}}</span></div>
                   </sui-accordion-content>
                 </sui-accordion>
@@ -39,7 +39,7 @@
           </sui-accordion-content>
           <sui-accordion-title>
             <sui-icon name="dropdown" />
-            <strong>На неделю</strong>
+            <strong>Задачи на неделю</strong>
           </sui-accordion-title>
           <sui-accordion-content>
             <div class="todo-list" v-for="(todo, index) in todoListWeek">
@@ -67,7 +67,7 @@
           </sui-accordion-content>
           <sui-accordion-title>
             <sui-icon name="dropdown" />
-            <strong>На будущее</strong>
+            <strong>Задачи на будущее</strong>
           </sui-accordion-title>
           <sui-accordion-content>
             <div class="todo-list" v-for="(todo, index) in todoListFuture">
@@ -96,20 +96,67 @@
 
           <sui-accordion-title>
             <sui-icon name="dropdown" />
-            <strong>Люди</strong>
+            <strong>Информация о людях</strong>
           </sui-accordion-title>
           <sui-accordion-content>
-            <div class="todo-list" v-for="todo in peopleList">
+            <div class="todo-list" v-for="(todo, index) in peopleList">
               <div class="todo-item">
                 <sui-accordion exclusive>
                   <sui-accordion-title>
-                    <div class="title-strong"><strong>{{todo.name}}</strong></div>
-                    <div class="title-span"><span>{{todo.date}}</span></div>
+                    <span class="icon-done" v-if="todo.done">
+                      <font-awesome-icon icon="check" />
+                    </span>
+                    <span class="icon-done" v-else>
+                      <font-awesome-icon icon="times" />
+                    </span>
+                    <div>
+                      <div class="title-strong"><strong>{{todo.name}}</strong></div>
+                      <div class="title-span"><span>{{todo.date}}</span></div>
+                    </div>
                   </sui-accordion-title>
                   <sui-accordion-content>
                     <span>{{todo.text}}</span>
                   </sui-accordion-content>
                 </sui-accordion>
+                <div class="icon-remove" @click="removePeople(index)">
+                  <font-awesome-icon icon="trash-alt" />
+                </div>
+              </div>
+            </div>
+          </sui-accordion-content>
+
+          <sui-accordion-title>
+            <sui-icon name="dropdown" />
+            <strong>Настройки</strong>
+          </sui-accordion-title>
+          <sui-accordion-content>
+            <div class="todo-list">
+              <div class="todo-item">
+                <sui-accordion exclusive>
+                  <sui-accordion-title>
+                    <div class="settings">
+                      <div><span>Изменить язык</span></div>
+                      <div><span>Русский</span></div>
+                    </div>
+                  </sui-accordion-title>
+                  <sui-accordion-content>
+                    <div><span>Русский</span></div>
+                    <div><span>English</span></div>
+                  </sui-accordion-content>
+                </sui-accordion>
+
+              </div>
+              <div class="todo-item">
+                <div class="settings">
+                  <div><span>Ночная тема</span></div>
+                  <sui-checkbox label="" toggle v-model="nightTheme"/>
+                </div>
+              </div>
+              <div class="todo-item">
+                <div class="settings">
+                  <div><span>Фиолетовый/Зелёный</span></div>
+                  <sui-checkbox label="" toggle v-model="greenColor"/>
+                </div>
               </div>
             </div>
           </sui-accordion-content>
@@ -172,6 +219,8 @@
         todoListFuture: [],
         todoWishList: [],
         peopleList: [],
+        nightTheme: false,
+        greenColor: false
       }
     },
     created() {
@@ -197,6 +246,9 @@
         console.log(this.todoList);
         window.localStorage.setItem('todo', JSON.stringify(this.todoList));
       },
+      setPeopleList() {
+        window.localStorage.setItem('people', JSON.stringify(this.peopleList));
+      },
 
       getWishList() {
         this.todoList = JSON.parse(window.localStorage.getItem('wishlist'));
@@ -216,13 +268,16 @@
         this.peopleList = JSON.parse(window.localStorage.getItem('people'));
       },
 
-
       removeTodo(type ,id) {
         console.log(this[type][id]);
         console.log(id);
         console.log(type);
         this[type].splice(id, 1);
         this.setTodoList();
+      },
+      removePeople(id) {
+        this.peopleList.splice(id, 1);
+        this.setPeopleList();
       }
     }
   }
@@ -253,7 +308,7 @@
     height: 20px !important;
     width: 20px !important;
   }
-  .ui.accordion {
+  .ui.accordion, .ui.accordion .accordion {
     margin: 0;
     width: 100%;
   }
@@ -277,18 +332,31 @@
     width: 100%;
   }
   .todo-item .accordion .content.active {
-    padding: .5em 0 1em !important;
+    padding: .5em 0 !important;
   }
 
   .title-span {
     font-size: 80%;
+    display: block;
   }
   .icon-done {
     margin-right: 10px;
+    align-self: flex-start;
   }
   .icon-done svg {
     height: 20px !important;
     width: 20px !important;
   }
+  .settings {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+  }
+  /*.ui.checkbox label::after {*/
+    /*content: '';*/
+  /*}*/
+  /*.ui.toggle.checkbox input:checked~.box:before,.ui.toggle.checkbox input:checked~label:before {*/
+    /*background-color: #9b52d9 !important;*/
+  /*}*/
 
 </style>

@@ -106,6 +106,7 @@
   h1 {
     font-size: x-large;
     color: #9b52d9;
+    padding: 10px;
   }
   h2 {
     font-size: large;
