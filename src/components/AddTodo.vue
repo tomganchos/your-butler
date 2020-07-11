@@ -17,12 +17,12 @@
         <input v-model="newTodo.text" placeholder="Задача">
       </div>
 
-      <sui-dropdown
-        placeholder="На день / неделю / будущее"
-        selection
-        :options="selectTypes"
-        v-model="newTodo.type"
-      />
+<!--      <sui-dropdown-->
+<!--        placeholder="На день / неделю / будущее"-->
+<!--        selection-->
+<!--        :options="selectTypes"-->
+<!--        v-model="newTodo.type"-->
+<!--      />-->
 
       <div class="ui fluid selection dropdown">
         <input type="hidden" name="user">

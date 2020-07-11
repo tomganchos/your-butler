@@ -3,44 +3,44 @@
       <!--<div style="display: flex">-->
         <!--<img class="image image-cover" src="../assets/bg.png" alt="фон">-->
       <!--</div>-->
-      <div>
-        <h1>
-        Добавление
-        </h1>
-      </div>
+      <header class="header">
+        <span class="page-header">
+          {{ $t('add-page.header') }}
+        </span>
+      </header>
       <div class="button-list">
         <!--<h2>-->
           <!--Добавление задач:-->
         <!--</h2>-->
         <div class="button" @click="addButton('todo')">
           <!--<router-link to="/add-todo">-->
-          <div class="header">
+          <div class="button-header">
             <font-awesome-icon icon="check-square" />
-            <strong class="header-text">Добавление задачи</strong>
+            <strong class="header-text">{{ $t('add-page.adding-task') }}</strong>
           </div>
           <div>
-            <span class="description">TODO на день, неделю, на будущее. Добавление подзадач</span>
+            <span class="header-description">{{ $t('add-page.adding-task-description') }}</span>
           </div>
           <!--</router-link>-->
         </div>
 
         <div class="button" @click="addButton('thumbs-up')">
-          <div class="header">
+          <div class="button-header">
             <font-awesome-icon icon="thumbs-up" />
             <strong class="header-text">Добавление "на потом"</strong>
           </div>
           <div>
-            <span class="description">Кино, сериал, песня, альбом, игра, книга, статья и т.д.</span>
+            <span class="header-description">Кино, сериал, песня, альбом, игра, книга, статья и т.д.</span>
           </div>
         </div>
 
         <div class="button" @click="addButton('people')">
-          <div class="header">
+          <div class="button-header">
             <font-awesome-icon icon="user" />
             <strong class="header-text">Добавление информации о человеке</strong>
           </div>
           <div>
-            <span class="description">Дни рождения и другие события людей, которых нет в социальных сетях</span>
+            <span class="header-description">Дни рождения и другие события людей, которых нет в социальных сетях</span>
           </div>
         </div>
       </div>
@@ -92,114 +92,148 @@
 
 <style scoped>
 
-  .image {
-    /*float: left;*/
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    z-index: -1;
+  /*.image {*/
+  /*  !*float: left;*!*/
+  /*  width: 100%;*/
+  /*  height: 100%;*/
+  /*  position: absolute;*/
+  /*  left: 0;*/
+  /*  z-index: -1;*/
+  /*}*/
+  /*.image-cover {*/
+  /*  object-fit: cover;*/
+  /*}*/
+  /*h1 {*/
+  /*  font-size: x-large;*/
+  /*  color: #9b52d9;*/
+  /*  padding: 10px;*/
+  /*}*/
+  /*h2 {*/
+  /*  font-size: large;*/
+  /*  color: #333333;*/
+  /*  margin: 0;*/
+  /*}*/
+  /*.button-list {*/
+  /*  display: flex;*/
+  /*  flex-direction: column;*/
+  /*  transition: 0.4s ease-in-out;*/
+  /*  -ms-transition: 0.4s ease-in-out;*/
+  /*  -moz-transition: 0.4s ease-in-out;*/
+  /*  -webkit-transition: 0.4s ease-in-out;*/
+  /*}*/
+  /*.button-list.little {*/
+  /*  display: flex;*/
+  /*  flex-direction: row;*/
+  /*  justify-content: space-around;*/
+  /*  align-content: space-around;*/
+  /*  align-items: flex-start;*/
+  /*  transition: 0.4s ease-in-out;*/
+  /*  -ms-transition: 0.4s ease-in-out;*/
+  /*  -moz-transition: 0.4s ease-in-out;*/
+  /*  -webkit-transition: 0.4s ease-in-out;*/
+  /*}*/
+  /*.button-list.little .header-text, .button-list.little .description {*/
+  /*  display: none;*/
+  /*}*/
+  /*.button span {*/
+  /*  margin-top: 5px;*/
+  /*  display: flex;*/
+  /*  text-align: left;*/
+  /*}*/
+  /*.button strong {*/
+  /*  font-size: large;*/
+  /*  text-align: left;*/
+  /*  margin-left: 10px;*/
+  /*}*/
+  /*.button .header {*/
+  /*  display: flex; align-items: center*/
+  /*}*/
+  /*.button .header .header-text {*/
+  /*  margin-left: 10px;*/
+  /*}*/
+  /*.button {*/
+  /*  display: block;*/
+  /*  padding: 10px 10px 15px 10px;*/
+  /*  border-radius: 10px;*/
+  /*  margin: 10px;*/
+  /*  background-color: rgba(173, 90, 242, 0.2);*/
+  /*  !*box-shadow: 0 0 10px rgba(0,0,0,0.3);*!*/
+  /*  cursor: pointer;*/
+  /*  opacity: 1;*/
+  /*  transition: opacity 0.4s ease-out;*/
+  /*  -ms-transition: opacity 0.4s ease-out;*/
+  /*  -moz-transition: opacity 0.4s ease-out;*/
+  /*  -webkit-transition: opacity 0.4s ease-out;*/
+  /*  !*border: 1px #f4433670 solid;*!*/
+  /*}*/
+  /*.button:hover, .button:focus, .button:active,*/
+  /*.button:hover svg path, .button:focus svg path, .button:active svg path {*/
+  /*  color: #9b52d9;*/
+  /*  background-color: rgba(155, 82, 217, 0.35);*/
+  /*}*/
+
+  /*.button.little {*/
+  /*  !*display: flex;*!*/
+  /*}*/
+  /*.button.little .header-text {*/
+  /*  opacity: 0;*/
+  /*  transition: opacity 0.4s ease-in;*/
+  /*  -ms-transition: opacity 0.4s ease-in;*/
+  /*  -moz-transition: opacity 0.4s ease-in;*/
+  /*  -webkit-transition: opacity 0.4s ease-in;*/
+  /*}*/
+  /*.button.little .description {*/
+  /*  display: none;*/
+  /*  !*opacity: 0;*!*/
+  /*  !*transition: opacity 0.4s ease-in;*!*/
+  /*  !*-ms-transition: opacity 0.4s ease-in;*!*/
+  /*  !*-moz-transition: opacity 0.4s ease-in;*!*/
+  /*  !*-webkit-transition: opacity 0.4s ease-in;*!*/
+  /*}*/
+  /*.button.little.chosen {*/
+  /*  border-radius: 10px 10px 0 0;*/
+  /*  padding-bottom: 25px;*/
+  /*  margin-bottom: 0;*/
+  /*}*/
+
+  .header {
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-  .image-cover {
-    object-fit: cover;
+  .page-header {
+    font-size: 24px;
+    font-weight: 100;
   }
-  h1 {
-    font-size: x-large;
-    color: #9b52d9;
-    padding: 10px;
-  }
-  h2 {
-    font-size: large;
-    color: #333333;
-    margin: 0;
-  }
+
   .button-list {
     display: flex;
     flex-direction: column;
-    transition: 0.4s ease-in-out;
-    -ms-transition: 0.4s ease-in-out;
-    -moz-transition: 0.4s ease-in-out;
-    -webkit-transition: 0.4s ease-in-out;
-  }
-  .button-list.little {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-content: space-around;
-    align-items: flex-start;
-    transition: 0.4s ease-in-out;
-    -ms-transition: 0.4s ease-in-out;
-    -moz-transition: 0.4s ease-in-out;
-    -webkit-transition: 0.4s ease-in-out;
-  }
-  .button-list.little .header-text, .button-list.little .description {
-    display: none;
-  }
-  .button span {
-    margin-top: 5px;
-    display: flex;
-    text-align: left;
-  }
-  .button strong {
-    font-size: large;
-    text-align: left;
-    margin-left: 10px;
-  }
-  .button .header {
-    display: flex; align-items: center
-  }
-  .button .header .header-text {
-    margin-left: 10px;
   }
   .button {
-    display: block;
-    padding: 10px 10px 15px 10px;
-    border-radius: 10px;
-    margin: 10px;
-    background-color: rgba(173, 90, 242, 0.2);
-    /*box-shadow: 0 0 10px rgba(0,0,0,0.3);*/
-    cursor: pointer;
-    opacity: 1;
-    transition: opacity 0.4s ease-out;
-    -ms-transition: opacity 0.4s ease-out;
-    -moz-transition: opacity 0.4s ease-out;
-    -webkit-transition: opacity 0.4s ease-out;
-    /*border: 1px #f4433670 solid;*/
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #3E2D4B;
+    margin: 4px 8px;
+    padding: 8px;
+    border-radius: 4px;
   }
-  .button:hover, .button:focus, .button:active,
-  .button:hover svg path, .button:focus svg path, .button:active svg path {
-    color: #9b52d9;
-    background-color: rgba(155, 82, 217, 0.35);
+  .button-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
   }
-
-  .button.little {
-    /*display: flex;*/
+  .button-header svg {
+    margin-right: 8px;
   }
-  .button.little .header-text {
-    opacity: 0;
-    transition: opacity 0.4s ease-in;
-    -ms-transition: opacity 0.4s ease-in;
-    -moz-transition: opacity 0.4s ease-in;
-    -webkit-transition: opacity 0.4s ease-in;
+  .button .header-text {
+    text-align: left;
   }
-  .button.little .description {
-    display: none;
-    /*opacity: 0;*/
-    /*transition: opacity 0.4s ease-in;*/
-    /*-ms-transition: opacity 0.4s ease-in;*/
-    /*-moz-transition: opacity 0.4s ease-in;*/
-    /*-webkit-transition: opacity 0.4s ease-in;*/
+  .button .header-description {
+    display: flex;
+    text-align: left;
   }
-  .button.little.chosen {
-    border-radius: 10px 10px 0 0;
-    padding-bottom: 25px;
-    margin-bottom: 0;
-  }
-
-  /*@media screen and (max-width: 600px) {*/
-    /*.button {*/
-      /*background-color: #42b983;*/
-    /*}*/
-  /*}*/
 
 </style>

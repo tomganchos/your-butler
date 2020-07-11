@@ -28,13 +28,6 @@
       </div>
 
 
-      <div>
-        <sui-button basic primary>Primary</sui-button>
-        <sui-button basic secondary>Secondary</sui-button>
-        <sui-button basic positive>Positive</sui-button>
-        <sui-button basic negative>Negative</sui-button>
-      </div>
-
     </div>
     <div class="submit-button">
       <button @click="addPeople()">{{submitButtonText}}</button>

@@ -56,17 +56,18 @@
       console.log(this.todoList);
 
 
-
-      this.todoList.forEach(item => {
-        if (item.type === 'day')
-          this.todoListDay.push(item);
-        else if (item.type === 'week')
-          this.todoListWeek.push(item);
-        else if (item.type === 'future') {
-          this.todoListFuture.push(item);
-        }
-        console.log(item);
-      })
+      if (this.todoList) {
+        this.todoList.forEach(item => {
+          if (item.type === 'day')
+            this.todoListDay.push(item);
+          else if (item.type === 'week')
+            this.todoListWeek.push(item);
+          else if (item.type === 'future') {
+            this.todoListFuture.push(item);
+          }
+          console.log(item);
+        })
+      }
     }
   }
 </script>

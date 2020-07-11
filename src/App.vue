@@ -26,7 +26,6 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #dfdfdf;
-
 }
 textarea:focus, input:focus, button, button:focus, button:hover {
   outline: none;
