@@ -27,30 +27,30 @@
         <div class="button" @click="addButton('thumbs-up')">
           <div class="button-header">
             <font-awesome-icon icon="thumbs-up" />
-            <strong class="header-text">Добавление "на потом"</strong>
+            <strong class="header-text">{{ $t('add-page.adding-for-late') }}</strong>
           </div>
           <div>
-            <span class="header-description">Кино, сериал, песня, альбом, игра, книга, статья и т.д.</span>
+            <span class="header-description">{{ $t('add-page.adding-for-late-description') }}</span>
           </div>
         </div>
 
         <div class="button" @click="addButton('people')">
           <div class="button-header">
             <font-awesome-icon icon="user" />
-            <strong class="header-text">Добавление информации о человеке</strong>
+            <strong class="header-text">{{ $t('add-page.adding-person') }}</strong>
           </div>
           <div>
-            <span class="header-description">Дни рождения и другие события людей, которых нет в социальных сетях</span>
+            <span class="header-description">{{ $t('add-page.adding-person-description') }}</span>
           </div>
         </div>
       </div>
-      <div class="my-router" style="display: none">
+      <div class="my-router todo" style="display: none">
         <add-todo></add-todo>
       </div>
-      <div class="my-router" style="display: none">
+      <div class="my-router wish-list" style="display: none">
         <add-wish-list></add-wish-list>
       </div>
-      <div class="my-router" style="display: none">
+      <div class="my-router people" style="display: none">
         <add-people></add-people>
       </div>
     </div>
@@ -69,22 +69,12 @@
           document.getElementsByClassName('button')[i].className = 'button little';
         }
         if (type === 'todo') {
-          // document.getElementsByClassName('button')[0].className = 'button little chosen';
-          // document.getElementsByClassName('button')[1].className = 'button little';
-          // document.getElementsByClassName('button')[2].className = 'button little';
-          document.querySelectorAll('.my-router')[0].style.display = 'block';
+          document.querySelector('.my-router.todo').style.display = 'block';
         } else if (type === 'thumbs-up') {
-          // document.getElementsByClassName('button')[0].className = 'button little';
-          // document.getElementsByClassName('button')[1].className = 'button little chosen';
-          // document.getElementsByClassName('button')[2].className = 'button little';
-          document.querySelectorAll('.my-router')[1].style.display = 'block';
+          document.querySelector('.my-router.wish-list').style.display = 'block';
         } else if (type === 'people') {
-          // document.getElementsByClassName('button')[0].className = 'button little';
-          // document.getElementsByClassName('button')[1].className = 'button little';
-          // document.getElementsByClassName('button')[2].className = 'button little chosen';
-          document.querySelectorAll('.my-router')[2].style.display = 'block';
+          document.querySelector('.my-router.people').style.display = 'block';
         }
-        // document.getElementsByClassName('button-list')[0].className = 'button-list little';
       }
     }
   }
@@ -205,6 +195,7 @@
   .page-header {
     font-size: 24px;
     font-weight: 100;
+    color: #9b52d9;
   }
 
   .button-list {
@@ -219,6 +210,7 @@
     margin: 4px 8px;
     padding: 8px;
     border-radius: 4px;
+    cursor: pointer;
   }
   .button-header {
     display: flex;

@@ -27,7 +27,7 @@
                     <strong>{{todo.text}}</strong>
                   </sui-accordion-title>
                   <sui-accordion-content>
-                    <div class="title-strong"><span>{{todo.date | moment('DD.MM.YYYY')}}</span></div>
+                    <div class="title-strong"><span>{{todo.date}}</span></div>
                     <div class="title-span"><span>{{todo.description}}</span></div>
                   </sui-accordion-content>
                 </sui-accordion>
