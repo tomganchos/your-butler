@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view/>
+    <transition name="fade" mode="out-in">
+      <router-view/>
+    </transition>
 
     <nav class="menu">
       <ul>
@@ -64,5 +66,16 @@ textarea:focus, input:focus, button, button:focus, button:hover {
     /*background-color: gold;*/
     color: #9b52d9;
   }
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: 0.15s;
+  transition-property: opacity;
+  transition-timing-function: ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0
+}
 
 </style>

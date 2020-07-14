@@ -4,7 +4,8 @@ import HelloWorld from '@/components/HelloWorld'
 import AddPage from "@/components/AddPage"
 import TodayPage from "@/components/TodayPage"
 import CalendarPage from "@/components/CalendarPage"
-import AddTodo from "../components/AddTodo";
+import AddTodo from "@/components/AddTodo"
+import TodoItem from "@/components/TodoItem";
 
 Vue.use(Router);
 
@@ -20,6 +21,11 @@ export default new Router({
       path: '/',
       name: 'TodayPage',
       component: TodayPage
+    },
+    {
+      path: '/:id',
+      name: 'TodoItem',
+      component: TodoItem
     },
     {
       path: '/calendar',

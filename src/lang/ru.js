@@ -18,7 +18,16 @@ export default {
       'time': 'Время',
       'description': 'Описание',
       'description-of-description': 'Описание задачи',
-      'checklist': 'Чеклист'
+      'checklist': 'Чеклист',
+      'add': 'Добавить',
+      'added': 'Добавлено'
     }
+  },
+  'today-page': {
+    'header': 'Список дел',
+    'for-today': 'На сегодня',
+    'for-week': 'На неделю',
+    'for-future': 'На будущее',
+    'without-description': 'Без описания'
   }
 }

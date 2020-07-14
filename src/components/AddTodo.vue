@@ -5,7 +5,7 @@
         {{ $t('add-page.add-todo-page.header') }}
       </span>
       <span>
-        <router-link to="/">
+        <router-link to="/add">
           <font-awesome-icon icon="times" />
         </router-link>
       </span>
@@ -17,19 +17,23 @@
       </label>
       <label class="block">
         <span>{{ $t('add-page.add-todo-page.day-week-future') }}</span>
-        <select v-model="newTodo.type" :placeholder="$t('add-page.add-todo-page.for-day')">
+        <select v-model="newTodo.type" :placeholder="$t('add-page.add-todo-page.for-day')" @change="changeType()">
           <option value="day">На день</option>
           <option value="week">На неделю</option>
           <option value="future">На будущее</option>
         </select>
       </label>
-      <label class="block">
+      <label v-if="newTodo.type === 'day'" class="block">
         <span>{{ $t('add-page.add-todo-page.date') }}</span>
         <input v-model="newTodo.date" type="date">
       </label>
-      <label class="block">
+      <label v-if="newTodo.type === 'day'" class="block">
         <span>{{ $t('add-page.add-todo-page.time') }}</span>
         <input v-model="newTodo.time" type="time">
+      </label>
+      <label v-if="newTodo.type === 'week'" class="block">
+        <span>{{ $t('add-page.add-todo-page.time') }}</span>
+        <input v-model="newTodo.week" type="week">
       </label>
       <label class="block">
         <span>{{ $t('add-page.add-todo-page.description') }}</span>
@@ -41,63 +45,15 @@
 <!--      </label>-->
     </main>
     <footer class="container-footer">
-      <button @click="addTodo()">Добавить</button>
+      <button @click="addTodo()">{{ addTodoText }}</button>
     </footer>
-<!--    <div class="scroll-container">-->
-
-
-<!--      <div class="ui fluid input">-->
-<!--        <input>-->
-<!--      </div>-->
-
-
-<!--      <div class="ui fluid selection dropdown">-->
-<!--        <input type="hidden" name="user">-->
-<!--        <i class="dropdown icon"></i>-->
-<!--        <div class="default text">На день / неделю / будущее</div>-->
-<!--        <div class="menu">-->
-<!--          <div class="item" data-value="day">-->
-<!--            На определённый день-->
-<!--          </div>-->
-<!--          <div class="item" data-value="week">-->
-<!--            На всю неделю-->
-<!--          </div>-->
-<!--          <div class="item" data-value="future">-->
-<!--            На неопределённое будущее-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div>-->
-<!--        <label>Задача на день/неделю/будущее</label>-->
-<!--        <select class="form" v-model="newTodo.type">-->
-<!--          <option value="day">На день</option>-->
-<!--          <option value="week">На неделю</option>-->
-<!--          <option value="future">На будущее</option>-->
-<!--        </select>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <label>Дата и время</label>-->
-<!--        <div>-->
-<!--          <input class="input-date" type="date" v-model="newTodo.date">-->
-<!--          <input class="input-date" type="time" v-model="newTodo.time">-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <label>Описание задачи</label>-->
-<!--        <textarea v-model="newTodo.description"></textarea>-->
-<!--      </div>-->
-<!--      &lt;!&ndash;<span>{{storage}}</span>&ndash;&gt;-->
-<!--    </div>-->
-<!--    <div class="submit-button">-->
-<!--      <button @click="addTodo()">Добавить</button>-->
-<!--    </div>-->
   </div>
 </template>
 
 <script>
   import moment from 'moment'
   import { getStorageItem, addTodo } from "../storage";
+  import {gsap} from "gsap";
 
   export default {
     name: "AddTodo",
@@ -107,6 +63,7 @@
           text: '',
           date: null,
           time: null,
+          week: null,
           type: 'day',
           description: '',
           done: false
@@ -123,6 +80,7 @@
           text: 'На неопределённое будущее',
           value: 'future',
         }],
+        addTodoText: ''
       }
     },
     mounted () {
@@ -132,6 +90,7 @@
       // window.localStorage.setItem("key1", "value11");
       this.storage = getStorageItem();
       this.newTodo.date = moment().format('YYYY-MM-DD')
+      this.addTodoText = this.$t('add-page.add-todo-page.add')
     },
     methods: {
       addTodo() {
@@ -146,18 +105,41 @@
         obj.done = this.newTodo.done;
         console.log(obj);
         console.log(JSON.stringify(obj));
-        if (window.localStorage.getItem('todo')) {
-          console.log(window.localStorage.getItem('todo'));
-          let list = JSON.parse(window.localStorage.getItem('todo'));
-          list.push(obj);
-          window.localStorage.setItem('todo', JSON.stringify(list));
-        } else {
-          let list = [];
-          list.push(obj);
-          console.log(JSON.stringify(list));
-          window.localStorage.setItem('todo', JSON.stringify(list));
+        this.addTodoText = this.$t('add-page.add-todo-page.added');
+        const height = document.querySelector('.container').clientHeight
+        const width = document.querySelector('.container').clientWidth
+        gsap.to('.container-footer button', {duration: 0.2, height: 'calc(100vh - 16px)', width: 'calc(100vw - 16px)', marginTop: -48, marginLeft: 0 })
+        setTimeout(this.routeToMenu, 1000);
+        // if (window.localStorage.getItem('todo')) {
+        //   console.log(window.localStorage.getItem('todo'));
+        //   let list = JSON.parse(window.localStorage.getItem('todo'));
+        //   list.push(obj);
+        //   window.localStorage.setItem('todo', JSON.stringify(list));
+        // } else {
+        //   let list = [];
+        //   list.push(obj);
+        //   console.log(JSON.stringify(list));
+        //   window.localStorage.setItem('todo', JSON.stringify(list));
+        // }
+        // this.storage = window.localStorage.getItem('todo');
+      },
+      routeToMenu() {
+        this.$router.push('/add')
+      },
+      changeType () {
+        switch (this.newTodo.type) {
+          case 'day':
+            this.week = null
+            break
+          case 'week':
+            this.date = null
+            this.time = null
+            break
+          case 'future':
+            this.date = null
+            this.time = null
+            this.week = null
         }
-        this.storage = window.localStorage.getItem('todo');
       }
     }
   }
@@ -240,77 +222,5 @@
     font-size: 14px;
     font-family: 'Roboto', 'Avenir', Helvetica, Arial, sans-serif;
   }
-  /*.container input, .container select, .container textarea {*/
-  /*  !*width: 100%;*!*/
-  /*  margin-bottom: 15px;*/
-  /*}*/
-  /*.header-container {*/
-  /*  display: flex;*/
-  /*  justify-content: space-between;*/
-  /*  align-items: center;*/
-  /*  margin-bottom: 20px;*/
-  /*  font-size: large;*/
-  /*}*/
-  /*.header-text {*/
-  /*  white-space: nowrap;*/
-  /*  overflow: hidden;*/
-  /*  text-overflow: ellipsis;*/
-  /*}*/
-  /*.header-container svg {*/
-  /*  padding: 0;*/
-  /*}*/
-  /*.scroll-container {*/
-  /*  display: flex;*/
-  /*  flex-direction: column;*/
-  /*  flex-grow: 1;*/
-  /*}*/
-  /*.scroll-container input {*/
-  /*  display: block;*/
-  /*  margin-top: 5px;*/
-  /*  width: 100%;*/
-  /*  margin-bottom: 15px;*/
-  /*}*/
-  /*!*.form {*!*/
-  /*  !*padding: 5px;*!*/
-  /*  !*display: flex;*!*/
-  /*  !*width: calc(100% - 15px);*!*/
-  /*  !*margin-top: 5px;*!*/
-  /*!*}*!*/
-  /*select.form {*/
-  /*  width: 100%;*/
-  /*  border-style: inset;*/
-  /*  border-width: 1.99653px;*/
-  /*  border-color: white;*/
-  /*  margin-top: 5px;*/
-  /*}*/
-
-  /*.submit-button {*/
-  /*  position: absolute;*/
-  /*  bottom: 0;*/
-  /*  left: 0;*/
-  /*  right: 0;*/
-  /*  margin: 10px;*/
-  /*}*/
-  /*.submit-button button {*/
-  /*  width: 100%;*/
-  /*  padding: 5px;*/
-  /*  color: #222222;*/
-  /*  font-weight: bold;*/
-  /*}*/
-  /*.input-date {*/
-  /*  width: calc(50% - 16px);*/
-  /*  padding: 5px;*/
-  /*  margin-top: 5px;*/
-  /*}*/
-  /*textarea {*/
-  /*  width: 100%;*/
-  /*  margin-top: 5px;*/
-  /*  height: 40px;*/
-  /*}*/
-  /*.menu.visible {*/
-  /*  z-index: 1000;*/
-  /*  height: max-content;*/
-  /*  display: block;*/
-  /*}*/
 
 </style>
