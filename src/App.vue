@@ -9,6 +9,7 @@
         <li><router-link to="/add"><font-awesome-icon icon="plus-circle" /></router-link></li>
         <li><router-link to="/"><span><font-awesome-icon icon="clipboard-list" /></span></router-link></li>
         <li><router-link to="/calendar"><font-awesome-icon icon="calendar-alt" /></router-link></li>
+        <li><router-link to="/dictionary"><font-awesome-icon icon="globe-europe" /></router-link></li>
       </ul>
     </nav>
   </div>

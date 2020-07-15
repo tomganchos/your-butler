@@ -21,7 +21,7 @@
           <!--</router-link>-->
         </router-link>
 
-        <div class="button" @click="addButton('thumbs-up')">
+        <router-link to="/add-wishlist" class="button">
           <div class="button-header">
             <font-awesome-icon icon="thumbs-up" />
             <strong class="header-text">{{ $t('add-page.adding-for-late') }}</strong>
@@ -29,9 +29,9 @@
           <div>
             <span class="header-description">{{ $t('add-page.adding-for-late-description') }}</span>
           </div>
-        </div>
+        </router-link>
 
-        <div class="button" @click="addButton('people')">
+        <router-link to="/add-people" class="button">
           <div class="button-header">
             <font-awesome-icon icon="user" />
             <strong class="header-text">{{ $t('add-page.adding-person') }}</strong>
@@ -39,7 +39,17 @@
           <div>
             <span class="header-description">{{ $t('add-page.adding-person-description') }}</span>
           </div>
-        </div>
+        </router-link>
+
+        <router-link to="/add-new-word" class="button">
+          <div class="button-header">
+            <font-awesome-icon icon="globe-europe" />
+            <strong class="header-text">{{ $t('add-page.adding-new-word') }}</strong>
+          </div>
+          <div>
+            <span class="header-description">{{ $t('add-page.adding-new-word-description') }}</span>
+          </div>
+        </router-link>
       </nav>
     </div>
 </template>

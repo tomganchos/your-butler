@@ -6,6 +6,9 @@ import TodayPage from "@/components/TodayPage"
 import CalendarPage from "@/components/CalendarPage"
 import AddTodo from "@/components/AddTodo"
 import TodoItem from "@/components/TodoItem";
+import AddWishList from "@/components/AddWishList";
+import AddPeople from "@/components/AddPeople";
+import AddNewWord from "@/components/AddNewWord";
 
 Vue.use(Router);
 
@@ -23,7 +26,7 @@ export default new Router({
       component: TodayPage
     },
     {
-      path: '/:id',
+      path: '/task/:id',
       name: 'TodoItem',
       component: TodoItem
     },
@@ -36,6 +39,21 @@ export default new Router({
       path: '/add-todo',
       name: 'AddTodo',
       component: AddTodo
+    },
+    {
+      path: '/add-wishlist',
+      name: 'AddWishList',
+      component: AddWishList
+    },
+    {
+      path: '/add-people',
+      name: 'AddPeople',
+      component: AddPeople
+    },
+    {
+      path: '/add-new-word',
+      name: 'AddNewWord',
+      component: AddNewWord
     }
   ]
 })

@@ -7,6 +7,8 @@ export default {
     'adding-for-late-description': 'Кино, сериал, песня, альбом, игра, книга, статья и т.д.',
     'adding-person': 'Добавление информации о человеке',
     'adding-person-description': 'Дни рождения и другие события людей, которых нет в социальных сетях',
+    'adding-new-word': 'Добавление нового слова',
+    'adding-new-word-description': 'Добавление нового слова на иностранном языке',
 
     'add-todo-page': {
       'header': 'Добавление задачи',
@@ -19,6 +21,24 @@ export default {
       'description': 'Описание',
       'description-of-description': 'Описание задачи',
       'checklist': 'Чеклист',
+      'add': 'Добавить',
+      'added': 'Добавлено'
+    },
+    'add-wishlist': {
+      'header': 'Добавление "на потом"',
+      'thematic': 'Тематика',
+      'name': 'Название',
+      'name-placeholder': 'Например, Холоп',
+      'description': 'Описание',
+      'description-placeholder': 'Без описания',
+      'movie': 'Кино',
+      'book': 'Книга',
+      'link': 'Ссылка',
+      'music': 'Музыка',
+      'game': 'Игра',
+      'cook': 'Рецепт',
+      'place': 'Место',
+      'other': 'Другое',
       'add': 'Добавить',
       'added': 'Добавлено'
     }

@@ -84,10 +84,6 @@
       }
     },
     mounted () {
-      console.log('test');
-      console.log(moment());
-
-      // window.localStorage.setItem("key1", "value11");
       this.storage = getStorageItem();
       this.newTodo.date = moment().format('YYYY-MM-DD')
       this.addTodoText = this.$t('add-page.add-todo-page.add')
@@ -109,7 +105,6 @@
         const height = document.querySelector('.container').clientHeight
         const width = document.querySelector('.container').clientWidth
         gsap.to('.container-footer button', {duration: 0.2, height: 'calc(100vh - 16px)', width: 'calc(100vw - 16px)', marginTop: -48, marginLeft: 0 })
-        setTimeout(this.routeToMenu, 1000);
         // if (window.localStorage.getItem('todo')) {
         //   console.log(window.localStorage.getItem('todo'));
         //   let list = JSON.parse(window.localStorage.getItem('todo'));
@@ -122,6 +117,7 @@
         //   window.localStorage.setItem('todo', JSON.stringify(list));
         // }
         // this.storage = window.localStorage.getItem('todo');
+        setTimeout(this.routeToMenu, 1000);
       },
       routeToMenu() {
         this.$router.push('/add')
@@ -222,5 +218,4 @@
     font-size: 14px;
     font-family: 'Roboto', 'Avenir', Helvetica, Arial, sans-serif;
   }
-
 </style>

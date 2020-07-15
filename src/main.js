@@ -6,14 +6,14 @@ import VueI18n from 'vue-i18n'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCoffee, faPlusCircle, faClipboardList, faCalendarAlt, faHeart, faUser, faThumbsUp, faCheckSquare, faTimes,
   faFilm, faBook, faNewspaper, faMusic, faGamepad, faUtensils, faMapMarkedAlt, faFileAlt,
-  faTrashAlt, faCheck} from '@fortawesome/free-solid-svg-icons'
+  faTrashAlt, faCheck, faGlobeEurope } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import ru from './lang/ru.js'
 import en from './lang/en.js'
 
 library.add(faCoffee, faPlusCircle, faClipboardList, faCalendarAlt, faHeart, faUser, faThumbsUp, faCheckSquare, faTimes,
   faFilm, faBook, faNewspaper, faMusic, faGamepad, faUtensils, faMapMarkedAlt, faFileAlt,
-  faTrashAlt, faCheck);
+  faTrashAlt, faCheck, faGlobeEurope );
 
 const messages = {
   en: en,

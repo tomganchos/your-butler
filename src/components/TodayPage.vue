@@ -8,7 +8,7 @@
       <main class="tasks-list">
         <div class="tasks">
           <label>{{ $t('today-page.for-today') }}</label>
-          <router-link v-for="task in todoListDay" :to="'/' + task.id" :key="task.id" class="task">
+          <router-link v-for="task in todoListDay" :to="'/task/' + task.id" :key="task.id" class="task">
             <div class="task-top">
               <div class="task-top__title">
                 {{ task.text }}
