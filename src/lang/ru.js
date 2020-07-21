@@ -10,6 +10,9 @@ export default {
     'adding-new-word': 'Добавление нового слова',
     'adding-new-word-description': 'Добавление нового слова на иностранном языке',
 
+    'add': 'Добавить',
+    'added': 'Добавлено',
+
     'add-todo-page': {
       'header': 'Добавление задачи',
       'task': 'Задача',
@@ -28,19 +31,45 @@ export default {
       'header': 'Добавление "на потом"',
       'thematic': 'Тематика',
       'name': 'Название',
-      'name-placeholder': 'Например, Холоп',
       'description': 'Описание',
       'description-placeholder': 'Без описания',
       'movie': 'Кино',
+      'movie-placeholder': 'Например, Холоп',
       'book': 'Книга',
+      'book-placeholder': 'Например, Марсианин',
       'link': 'Ссылка',
+      'link-placeholder': 'https://..',
       'music': 'Музыка',
+      'music-placeholder': 'Например, Mike Shinoda',
       'game': 'Игра',
+      'game-placeholder': 'Например, TES 5 Skyrim',
       'cook': 'Рецепт',
+      'cook-placeholder': 'Например, рецепт котлет и мух',
       'place': 'Место',
+      'place-placeholder': 'Например, Изборск',
       'other': 'Другое',
+      'other-placeholder': 'Что угодно',
       'add': 'Добавить',
       'added': 'Добавлено'
+    },
+    'add-people': {
+      'header': 'Добавление информации о человеке',
+      'name': 'Имя Фамилия',
+      'name-placeholder': 'Честер Беннингтон',
+      'event': 'Событие',
+      'event-placeholder': 'День рождения',
+      'date': 'Дата',
+      'is-once': 'Сообщить один раз',
+      'add': 'Добавить',
+      'added': 'Добавлено'
+    },
+    'add-word': {
+      'header': 'Добавление нового слова',
+      'word': 'Слово',
+      'word-placeholder': 'Suddenly',
+      'translate': 'Перевод',
+      'translate-translate': 'Внезапно',
+      'language': 'Язык'
     }
   },
   'today-page': {
@@ -49,5 +78,8 @@ export default {
     'for-week': 'На неделю',
     'for-future': 'На будущее',
     'without-description': 'Без описания'
+  },
+  'calendar': {
+    'header': 'Календарь'
   }
 }
