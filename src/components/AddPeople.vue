@@ -1,179 +1,156 @@
 <template>
-  <div class="_container">
-    <div class="header-container">
-      <strong class="header-text">
-        Добавление информации о человеке
-      </strong>
-      <span>
-        <router-link to="/">
-          <font-awesome-icon icon="times" />
-        </router-link>
-      </span>
-    </div>
-    <div class="scroll-container">
-
-      <label>Имя Фамилия</label>
-      <div class="ui fluid input">
-        <input v-model="newPeople.name">
-      </div>
-
-      <label>Событие</label>
-      <div class="ui fluid input">
-        <input v-model="newPeople.text">
-      </div>
-
-      <label>Дата </label>
-      <div class="ui fluid input">
-        <input type="date" v-model="newPeople.date">
-      </div>
-
-
-    </div>
-    <div class="submit-button">
-      <button @click="addPeople()">{{submitButtonText}}</button>
-    </div>
-  </div>
+  <add-component @add-event="addPeople">
+    <template slot="header">
+      {{ $t('add-page.add-people.header') }}
+    </template>
+    <template slot="main">
+      <label class="block">
+        <span>{{ $t('add-page.add-people.name') }}</span>
+        <input v-model="newPeople.name" :placeholder="$t('add-page.add-people.name-placeholder')">
+      </label>
+      <label class="block">
+        <span>{{ $t('add-page.add-people.event') }}</span>
+        <input v-model="newPeople.event" :placeholder="$t('add-page.add-people.event-placeholder')">
+      </label>
+      <label class="block">
+        <span>{{ $t('add-page.add-people.date') }}</span>
+        <input v-model="newPeople.date" type="date">
+      </label>
+      <label class="block checkbox">
+        <span>{{ $t('add-page.add-people.is-once') }}</span>
+        <input v-model="newPeople.isOnce" type="checkbox">
+      </label>
+    </template>
+  </add-component>
 </template>
 
 <script>
-
-  // import '../assets/semantic/jquery-3.3.1.min';
-  // import '../assets/semantic/semantic';
+  import AddComponent from './AddComponent'
 
   export default {
     name: "AddPeople",
+    components: { AddComponent },
     data() {
       return {
-        submitButtonText: 'Добавить',
         newPeople: {
           name: '',
-          text: '',
-          date: ''
-        }
+          event: '',
+          date: '',
+          isOnce: false
+        },
+        addPeopleText: ''
       }
+    },
+    mounted () {
+
     },
     methods: {
       addPeople() {
         let obj = {};
-        obj.name = this.newPeople.name;
-        obj.text = this.newPeople.text;
-        obj.date = this.newPeople.date;
-        if (window.localStorage.getItem('people')) {
-          console.log(window.localStorage.getItem('people'));
-          let list = JSON.parse(window.localStorage.getItem('people'));
-          list.push(obj);
-          window.localStorage.setItem('people', JSON.stringify(list));
-        } else {
-          let list = [];
-          list.push(obj);
-          console.log(JSON.stringify(list));
-          window.localStorage.setItem('people', JSON.stringify(list));
-        }
-        this.submitButtonText = 'Добавлено';
-
-        setTimeout(this.routeToMenu, 1000);
-      },
-      routeToMenu() {
-        this.$router.push('/')
+        obj.name = this.newPeople.name
+        obj.event = this.newPeople.event
+        obj.date = this.newPeople.date
+        obj.isOnce = this.newPeople.isOnce
+        // if (window.localStorage.getItem('people')) {
+        //   console.log(window.localStorage.getItem('people'));
+        //   let list = JSON.parse(window.localStorage.getItem('people'));
+        //   list.push(obj);
+        //   window.localStorage.setItem('people', JSON.stringify(list));
+        // } else {
+        //   let list = [];
+        //   list.push(obj);
+        //   console.log(JSON.stringify(list));
+        //   window.localStorage.setItem('people', JSON.stringify(list));
+        // }
+        console.log(obj)
       }
     }
   }
 </script>
 
 <style scoped>
-  /*@import '../assets/semantic/semantic.min.css';*/
-  svg path {
-    color: #dfdfdf;
-    padding: 0;
-  }
-  ._container {
-    background-color: #383838;
-    margin: 5px;
-    /*box-shadow: 0 0 10px rgba(0,0,0,0.3);*/
-    padding: 10px;
-    text-align: left;
-    color: #dfdfdf;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 10;
-    overflow-y: hidden;
-  }
-  .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    font-size: large;
-  }
-  .header-text {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .header-container svg {
-    padding: 0;
-  }
-
-  .scroll-container {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-  }
-
-  .scroll-container input {
-    display: block;
-    margin-top: 5px;
-    width: 100%;
-    margin-bottom: 15px;
-  }
-
-
-  .submit-button {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
-    display: flex;
-  }
-  /*button {*/
-    /*background-color: #9b52d9;*/
-    /*color: #fff;*/
-    /*border: none;*/
-    /*padding: 5px 10px;*/
-    /*border-radius: 15px;*/
-    /*font-family: 'Roboto', 'Avenir', Helvetica, Arial, sans-serif;*/
-    /*font-size: 16px;*/
-    /*width: 100%;*/
-    /*box-shadow: 0 0 10px #333333 ;*/
-    /*transition: ease-in-out 0.15s;*/
-    /*height: 30px;*/
+  /*svg path {*/
+  /*  color: #dfdfdf;*/
+  /*  padding: 0;*/
   /*}*/
-  /*button:focus, button:hover {*/
-  /*padding: 10px 20px;*/
-  /*height: 50px;*/
-  /*transition: ease-in-out 0.15s;*/
+  /*.container {*/
+  /*  background-color: #383838;*/
+  /*  position: absolute;*/
+  /*  top: 8px;*/
+  /*  left: 8px;*/
+  /*  right: 8px;*/
+  /*  bottom: 8px;*/
+  /*  z-index: 10;*/
+  /*  display: flex;*/
+  /*  flex-direction: column;*/
   /*}*/
-
-
-  /*button:active, button:focus {*/
-    /*height: 100vh;*/
-    /*margin: -10px;*/
-    /*width: calc(100% + 20px);*/
-    /*border-radius: 0;*/
-    /*transition: ease-in-out 0.15s;*/
+  /*.container.app-main {*/
+  /*  height: calc(100vh - 16px);*/
   /*}*/
-  .ui.input {
-    /*display: inherit;*/
-    margin-top: 5px;
-    margin-bottom: 15px;
-  }
-  .ui.input input {
-    display: flex;
-    padding: 5px 10px;
-    /*height: 19px;*/
-  }
+  /*.container-header {*/
+  /*  height: 48px;*/
+  /*  min-height: 48px;*/
+  /*  display: flex;*/
+  /*  align-items: center;*/
+  /*  justify-content: space-between;*/
+  /*  padding: 0 8px;*/
+  /*  font-size: 24px;*/
+  /*  font-weight: 100;*/
+  /*}*/
+  /*.container-header .header-text {*/
+  /*  width: calc(100vw - 16px - 25px - 8px);*/
+  /*  white-space: nowrap;*/
+  /*  overflow: hidden;*/
+  /*  text-overflow: ellipsis;*/
+  /*}*/
+  /*.container-main {*/
+  /*  flex-grow: 1;*/
+  /*  overflow-y: auto;*/
+  /*}*/
+  /*label.block {*/
+  /*  display: flex;*/
+  /*  flex-direction: column;*/
+  /*  align-items: flex-start;*/
+  /*  margin: 8px;*/
+  /*}*/
+  /*label.block span {*/
+  /*  margin-bottom: 8px;*/
+  /*  margin-left: 8px;*/
+  /*  font-size: 12px;*/
+  /*  color: #9b52d9;*/
+  /*}*/
+  /*label.block input {*/
+  /*  height: 32px;*/
+  /*  width: calc(100% - 32px);*/
+  /*  border-radius: 4px;*/
+  /*  border: none;*/
+  /*  padding: 0 16px;*/
+  /*}*/
+  /*label.block.checkbox {*/
+  /*  display: flex;*/
+  /*  flex-direction: row-reverse;*/
+  /*  justify-content: flex-end;*/
+  /*  align-items: center;*/
+  /*  margin: 16px 8px;*/
+  /*}*/
+  /*label.block.checkbox input[type="checkbox"] {*/
+  /*  width: 16px;*/
+  /*  height: 16px;*/
+  /*  margin: 0;*/
+  /*}*/
+  /*label.block.checkbox span {*/
+  /*  font-size: 14px;*/
+  /*  margin-bottom: 0;*/
+  /*}*/
+  /*.container-footer button {*/
+  /*  height: 32px;*/
+  /*  background-color: #9B52D9;*/
+  /*  color: #ffffff;*/
+  /*  border-radius: 4px;*/
+  /*  border: none;*/
+  /*  margin: 8px;*/
+  /*  width: calc(100% - 16px);*/
+  /*  font-size: 14px;*/
+  /*  font-family: 'Roboto', 'Avenir', Helvetica, Arial, sans-serif;*/
+  /*}*/
 </style>

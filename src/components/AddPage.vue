@@ -83,6 +83,8 @@
   .button-list {
     display: flex;
     flex-direction: column;
+    height: calc(100vh - 96px);
+    overflow-y: auto;
   }
   .button {
     display: flex;
