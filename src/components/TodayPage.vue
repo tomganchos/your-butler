@@ -172,6 +172,8 @@
   .tasks-list {
     display: flex;
     flex-direction: column;
+    height: calc(100vh - 96px);
+    overflow-y: auto;
   }
   .tasks {
     display: flex;
@@ -205,9 +207,13 @@
   .task-top__title {
     font-weight: bold;
     text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .task-top__date {
     text-align: right;
+    white-space: nowrap;
   }
   .task-bottom {
     width: 100%;

@@ -1,0 +1,21 @@
+#app.dark-theme {
+  color: #dfdfdf;
+  background-color: #222222;
+}
+#app.dark-theme .menu svg path {
+  color: #dfdfdf;
+}
+#app.dark-theme.green .router-link-exact-active svg path {
+  color: #55D952;
+}
+#app.dark-theme.green .page-header {
+  color: #55D952;
+}
+#app.dark-theme.green .page-main .button {
+  background-color: #C2D5B6;
+  color: #222222;
+}
+#app.dark-theme.green .page-main .button {
+  background-color: #C2D5B6;
+  color: #222222;
+}

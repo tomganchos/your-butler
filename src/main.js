@@ -5,15 +5,16 @@ import VueI18n from 'vue-i18n'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCoffee, faPlusCircle, faClipboardList, faCalendarAlt, faHeart, faUser, faThumbsUp, faCheckSquare, faTimes,
-  faFilm, faBook, faNewspaper, faMusic, faGamepad, faUtensils, faMapMarkedAlt, faFileAlt,
-  faTrashAlt, faCheck, faGlobeEurope } from '@fortawesome/free-solid-svg-icons'
+  faFilm, faTv, faBook, faNewspaper, faMusic, faGamepad, faUtensils, faMapMarkedAlt, faFileAlt,
+  faTrashAlt, faCheck, faGlobeEurope, faSlidersH } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import ru from './lang/ru.js'
 import en from './lang/en.js'
+import { getLanguage } from './lang'
 
 library.add(faCoffee, faPlusCircle, faClipboardList, faCalendarAlt, faHeart, faUser, faThumbsUp, faCheckSquare, faTimes,
-  faFilm, faBook, faNewspaper, faMusic, faGamepad, faUtensils, faMapMarkedAlt, faFileAlt,
-  faTrashAlt, faCheck, faGlobeEurope );
+  faFilm, faTv, faBook, faNewspaper, faMusic, faGamepad, faUtensils, faMapMarkedAlt, faFileAlt,
+  faTrashAlt, faCheck, faGlobeEurope, faSlidersH );
 
 const messages = {
   en: en,

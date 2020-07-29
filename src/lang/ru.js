@@ -79,7 +79,15 @@ export default {
     'for-future': 'На будущее',
     'without-description': 'Без описания'
   },
-  'calendar': {
+  'calendar-page': {
     'header': 'Календарь'
+  },
+  'settings-page': {
+    'header': 'Настройки',
+    'current-language': 'Выбранный язык',
+    'light-theme': 'Светлая тема',
+    'dark-theme': 'Тёмная тема',
+    'purple': 'Фиолетовый',
+    'green': 'Зелёный'
   }
 }

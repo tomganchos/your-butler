@@ -1,0 +1,21 @@
+#app {
+  color: #222222;
+  background-color: #f5f5f5;
+}
+#app .menu svg path {
+  color: #383838;
+}
+#app .router-link-exact-active svg path {
+  color: #9B52D9;
+}
+#app .page-header {
+  color: #9b52d9;
+}
+#app .page-main .button {
+  background-color: #3e2d4b;
+  color: #dfdfdf;
+}
+#app .page-main .button {
+  background-color: #3e2d4b;
+  color: #dfdfdf;
+}

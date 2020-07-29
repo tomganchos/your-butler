@@ -2,13 +2,15 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import AddPage from "@/components/AddPage"
-import TodayPage from "@/components/TodayPage"
-import CalendarPage from "@/components/CalendarPage"
 import AddTodo from "@/components/AddTodo"
-import TodoItem from "@/components/TodoItem";
 import AddWishList from "@/components/AddWishList";
 import AddPeople from "@/components/AddPeople";
 import AddNewWord from "@/components/AddNewWord";
+import TodayPage from "@/components/TodayPage"
+import CalendarPage from "@/components/CalendarPage"
+import TodoItem from "@/components/TodoItem"
+import DictionaryPage from "@/components/DictionaryPage"
+import SettingsPage from "@/components/SettingsPage"
 
 Vue.use(Router);
 
@@ -19,21 +21,6 @@ export default new Router({
       path: '/add',
       name: 'AddPage',
       component: AddPage
-    },
-    {
-      path: '/',
-      name: 'TodayPage',
-      component: TodayPage
-    },
-    {
-      path: '/task/:id',
-      name: 'TodoItem',
-      component: TodoItem
-    },
-    {
-      path: '/calendar',
-      name: 'CalendarPage',
-      component: CalendarPage
     },
     {
       path: '/add-todo',
@@ -54,6 +41,31 @@ export default new Router({
       path: '/add-new-word',
       name: 'AddNewWord',
       component: AddNewWord
-    }
+    },
+    {
+      path: '/',
+      name: 'TodayPage',
+      component: TodayPage
+    },
+    {
+      path: '/task/:id',
+      name: 'TodoItem',
+      component: TodoItem
+    },
+    {
+      path: '/calendar',
+      name: 'CalendarPage',
+      component: CalendarPage
+    },
+    {
+      path: '/dictionary',
+      name: 'DictionaryPage',
+      component: DictionaryPage
+    },
+    {
+      path: '/settings',
+      name: 'SettingsPage',
+      component: SettingsPage
+    },
   ]
 })

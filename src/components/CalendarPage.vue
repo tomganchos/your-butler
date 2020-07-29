@@ -1,216 +1,226 @@
 <template>
-    <div>
-      <div>
-        <h1>
-          Календарь
-        </h1>
+  <div>
+    <header class="header">
+        <span class="page-header">
+          {{ $t('calendar-page.header') }}
+        </span>
+    </header>
+    <main>
+      <calendar></calendar>
+
+      <div class="wishlist">
+        <button type="button">
+          <font-awesome-icon icon="film" />
+        </button>
+        <button type="button">
+          <font-awesome-icon icon="tv" />
+        </button>
       </div>
+    </main>
+  </div>
+<!--        <sui-accordion exclusive>-->
+<!--          <sui-accordion-title>-->
+<!--            <sui-icon name="dropdown" />-->
+<!--            <strong>Задачи на день</strong>-->
+<!--          </sui-accordion-title>-->
+<!--          <sui-accordion-content>-->
+<!--            <div class="todo-list" v-for="(todo, index) in todoListDay">-->
+<!--              <div class="todo-item">-->
+<!--                <sui-accordion exclusive>-->
+<!--                  <sui-accordion-title>-->
+<!--                    <span class="icon-done" v-if="todo.done">-->
+<!--                      <font-awesome-icon icon="check" />-->
+<!--                    </span>-->
+<!--                    <span class="icon-done" v-else>-->
+<!--                      <font-awesome-icon icon="times" />-->
+<!--                    </span>-->
+<!--                    <strong>{{todo.text}}</strong>-->
+<!--                  </sui-accordion-title>-->
+<!--                  <sui-accordion-content>-->
+<!--                    <div class="title-strong"><span>{{todo.date}}</span></div>-->
+<!--                    <div class="title-span"><span>{{todo.description}}</span></div>-->
+<!--                  </sui-accordion-content>-->
+<!--                </sui-accordion>-->
+<!--                <div class="icon-remove" @click="removeTodo('todoListDay', index)">-->
+<!--                  <font-awesome-icon icon="trash-alt" />-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </sui-accordion-content>-->
+<!--          <sui-accordion-title>-->
+<!--            <sui-icon name="dropdown" />-->
+<!--            <strong>Задачи на неделю</strong>-->
+<!--          </sui-accordion-title>-->
+<!--          <sui-accordion-content>-->
+<!--            <div class="todo-list" v-for="(todo, index) in todoListWeek">-->
+<!--              <div class="todo-item">-->
+<!--                <sui-accordion exclusive>-->
+<!--                  <sui-accordion-title>-->
+<!--                    <span class="icon-done" v-if="todo.done">-->
+<!--                      <font-awesome-icon icon="check" />-->
+<!--                    </span>-->
+<!--                    <span class="icon-done" v-else>-->
+<!--                      <font-awesome-icon icon="times" />-->
+<!--                    </span>-->
+<!--                    <strong>{{todo.text}}</strong>-->
+<!--                  </sui-accordion-title>-->
+<!--                  <sui-accordion-content>-->
+<!--                    <div class="title-strong"><span>{{todo.date}}</span></div>-->
+<!--                    <div class="title-span"><span>{{todo.description}}</span></div>-->
+<!--                  </sui-accordion-content>-->
+<!--                </sui-accordion>-->
+<!--                <div class="icon-remove" @click="removeTodo('todoListWeek', index)">-->
+<!--                  <font-awesome-icon icon="trash-alt" />-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </sui-accordion-content>-->
+<!--          <sui-accordion-title>-->
+<!--            <sui-icon name="dropdown" />-->
+<!--            <strong>Задачи на будущее</strong>-->
+<!--          </sui-accordion-title>-->
+<!--          <sui-accordion-content>-->
+<!--            <div class="todo-list" v-for="(todo, index) in todoListFuture">-->
+<!--              <div class="todo-item">-->
+<!--                <sui-accordion exclusive>-->
+<!--                  <sui-accordion-title>-->
+<!--                    <span class="icon-done" v-if="todo.done">-->
+<!--                      <font-awesome-icon icon="check" />-->
+<!--                    </span>-->
+<!--                    <span class="icon-done" v-else>-->
+<!--                      <font-awesome-icon icon="times" />-->
+<!--                    </span>-->
+<!--                    <strong>{{todo.text}}</strong>-->
+<!--                  </sui-accordion-title>-->
+<!--                  <sui-accordion-content>-->
+<!--                    <div class="title-strong"><span>{{todo.date}}</span></div>-->
+<!--                    <div class="title-span"><span>{{todo.description}}</span></div>-->
+<!--                  </sui-accordion-content>-->
+<!--                </sui-accordion>-->
+<!--                <div class="icon-remove" @click="removeTodo('todoListFuture', index)">-->
+<!--                  <font-awesome-icon icon="trash-alt" />-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </sui-accordion-content>-->
 
-      <div>
+<!--          <sui-accordion-title>-->
+<!--            <sui-icon name="dropdown" />-->
+<!--            <strong>Информация о людях</strong>-->
+<!--          </sui-accordion-title>-->
+<!--          <sui-accordion-content>-->
+<!--            <div class="todo-list" v-for="(todo, index) in peopleList">-->
+<!--              <div class="todo-item">-->
+<!--                <sui-accordion exclusive>-->
+<!--                  <sui-accordion-title>-->
+<!--                    <span class="icon-done" v-if="todo.done">-->
+<!--                      <font-awesome-icon icon="check" />-->
+<!--                    </span>-->
+<!--                    <span class="icon-done" v-else>-->
+<!--                      <font-awesome-icon icon="times" />-->
+<!--                    </span>-->
+<!--                    <div>-->
+<!--                      <div class="title-strong"><strong>{{todo.name}}</strong></div>-->
+<!--                      <div class="title-span"><span>{{todo.date}}</span></div>-->
+<!--                    </div>-->
+<!--                  </sui-accordion-title>-->
+<!--                  <sui-accordion-content>-->
+<!--                    <span>{{todo.text}}</span>-->
+<!--                  </sui-accordion-content>-->
+<!--                </sui-accordion>-->
+<!--                <div class="icon-remove" @click="removePeople(index)">-->
+<!--                  <font-awesome-icon icon="trash-alt" />-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </sui-accordion-content>-->
 
-        <sui-accordion exclusive>
-          <sui-accordion-title>
-            <sui-icon name="dropdown" />
-            <strong>Задачи на день</strong>
-          </sui-accordion-title>
-          <sui-accordion-content>
-            <div class="todo-list" v-for="(todo, index) in todoListDay">
-              <div class="todo-item">
-                <sui-accordion exclusive>
-                  <sui-accordion-title>
-                    <span class="icon-done" v-if="todo.done">
-                      <font-awesome-icon icon="check" />
-                    </span>
-                    <span class="icon-done" v-else>
-                      <font-awesome-icon icon="times" />
-                    </span>
-                    <strong>{{todo.text}}</strong>
-                  </sui-accordion-title>
-                  <sui-accordion-content>
-                    <div class="title-strong"><span>{{todo.date}}</span></div>
-                    <div class="title-span"><span>{{todo.description}}</span></div>
-                  </sui-accordion-content>
-                </sui-accordion>
-                <div class="icon-remove" @click="removeTodo('todoListDay', index)">
-                  <font-awesome-icon icon="trash-alt" />
-                </div>
-              </div>
-            </div>
-          </sui-accordion-content>
-          <sui-accordion-title>
-            <sui-icon name="dropdown" />
-            <strong>Задачи на неделю</strong>
-          </sui-accordion-title>
-          <sui-accordion-content>
-            <div class="todo-list" v-for="(todo, index) in todoListWeek">
-              <div class="todo-item">
-                <sui-accordion exclusive>
-                  <sui-accordion-title>
-                    <span class="icon-done" v-if="todo.done">
-                      <font-awesome-icon icon="check" />
-                    </span>
-                    <span class="icon-done" v-else>
-                      <font-awesome-icon icon="times" />
-                    </span>
-                    <strong>{{todo.text}}</strong>
-                  </sui-accordion-title>
-                  <sui-accordion-content>
-                    <div class="title-strong"><span>{{todo.date}}</span></div>
-                    <div class="title-span"><span>{{todo.description}}</span></div>
-                  </sui-accordion-content>
-                </sui-accordion>
-                <div class="icon-remove" @click="removeTodo('todoListWeek', index)">
-                  <font-awesome-icon icon="trash-alt" />
-                </div>
-              </div>
-            </div>
-          </sui-accordion-content>
-          <sui-accordion-title>
-            <sui-icon name="dropdown" />
-            <strong>Задачи на будущее</strong>
-          </sui-accordion-title>
-          <sui-accordion-content>
-            <div class="todo-list" v-for="(todo, index) in todoListFuture">
-              <div class="todo-item">
-                <sui-accordion exclusive>
-                  <sui-accordion-title>
-                    <span class="icon-done" v-if="todo.done">
-                      <font-awesome-icon icon="check" />
-                    </span>
-                    <span class="icon-done" v-else>
-                      <font-awesome-icon icon="times" />
-                    </span>
-                    <strong>{{todo.text}}</strong>
-                  </sui-accordion-title>
-                  <sui-accordion-content>
-                    <div class="title-strong"><span>{{todo.date}}</span></div>
-                    <div class="title-span"><span>{{todo.description}}</span></div>
-                  </sui-accordion-content>
-                </sui-accordion>
-                <div class="icon-remove" @click="removeTodo('todoListFuture', index)">
-                  <font-awesome-icon icon="trash-alt" />
-                </div>
-              </div>
-            </div>
-          </sui-accordion-content>
+<!--          <sui-accordion-title>-->
+<!--            <sui-icon name="dropdown" />-->
+<!--            <strong>Настройки</strong>-->
+<!--          </sui-accordion-title>-->
+<!--          <sui-accordion-content>-->
+<!--            <div class="todo-list">-->
+<!--              <div class="todo-item">-->
+<!--                <sui-accordion exclusive>-->
+<!--                  <sui-accordion-title>-->
+<!--                    <div class="settings">-->
+<!--                      <div><span>Изменить язык</span></div>-->
+<!--                      <div><span>Русский</span></div>-->
+<!--                    </div>-->
+<!--                  </sui-accordion-title>-->
+<!--                  <sui-accordion-content>-->
+<!--                    <div><span>Русский</span></div>-->
+<!--                    <div><span>English</span></div>-->
+<!--                  </sui-accordion-content>-->
+<!--                </sui-accordion>-->
 
-          <sui-accordion-title>
-            <sui-icon name="dropdown" />
-            <strong>Информация о людях</strong>
-          </sui-accordion-title>
-          <sui-accordion-content>
-            <div class="todo-list" v-for="(todo, index) in peopleList">
-              <div class="todo-item">
-                <sui-accordion exclusive>
-                  <sui-accordion-title>
-                    <span class="icon-done" v-if="todo.done">
-                      <font-awesome-icon icon="check" />
-                    </span>
-                    <span class="icon-done" v-else>
-                      <font-awesome-icon icon="times" />
-                    </span>
-                    <div>
-                      <div class="title-strong"><strong>{{todo.name}}</strong></div>
-                      <div class="title-span"><span>{{todo.date}}</span></div>
-                    </div>
-                  </sui-accordion-title>
-                  <sui-accordion-content>
-                    <span>{{todo.text}}</span>
-                  </sui-accordion-content>
-                </sui-accordion>
-                <div class="icon-remove" @click="removePeople(index)">
-                  <font-awesome-icon icon="trash-alt" />
-                </div>
-              </div>
-            </div>
-          </sui-accordion-content>
+<!--              </div>-->
+<!--              <div class="todo-item">-->
+<!--                <div class="settings">-->
+<!--                  <div><span>Ночная тема</span></div>-->
+<!--                  <sui-checkbox label="" toggle v-model="nightTheme"/>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="todo-item">-->
+<!--                <div class="settings">-->
+<!--                  <div><span>Фиолетовый/Зелёный</span></div>-->
+<!--                  <sui-checkbox label="" toggle v-model="greenColor"/>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </sui-accordion-content>-->
+<!--        </sui-accordion>-->
 
-          <sui-accordion-title>
-            <sui-icon name="dropdown" />
-            <strong>Настройки</strong>
-          </sui-accordion-title>
-          <sui-accordion-content>
-            <div class="todo-list">
-              <div class="todo-item">
-                <sui-accordion exclusive>
-                  <sui-accordion-title>
-                    <div class="settings">
-                      <div><span>Изменить язык</span></div>
-                      <div><span>Русский</span></div>
-                    </div>
-                  </sui-accordion-title>
-                  <sui-accordion-content>
-                    <div><span>Русский</span></div>
-                    <div><span>English</span></div>
-                  </sui-accordion-content>
-                </sui-accordion>
-
-              </div>
-              <div class="todo-item">
-                <div class="settings">
-                  <div><span>Ночная тема</span></div>
-                  <sui-checkbox label="" toggle v-model="nightTheme"/>
-                </div>
-              </div>
-              <div class="todo-item">
-                <div class="settings">
-                  <div><span>Фиолетовый/Зелёный</span></div>
-                  <sui-checkbox label="" toggle v-model="greenColor"/>
-                </div>
-              </div>
-            </div>
-          </sui-accordion-content>
-        </sui-accordion>
-
-      <sui-accordion>
-        <sui-accordion-title>
-          <sui-icon name="dropdown" />
-          <strong>Кино</strong>
-        </sui-accordion-title>
-        <sui-accordion-content>
-          <div class="todo-list" v-for="todo in peopleList">
-            <div class="todo-item">
-              <sui-accordion exclusive>
-                <sui-accordion-title>
-                  <div class="title-strong"><strong>{{todo.name}}</strong></div>
-                  <div class="title-span"><span>{{todo.date}}</span></div>
-                </sui-accordion-title>
-                <sui-accordion-content>
-                  <span>{{todo.text}}</span>
-                </sui-accordion-content>
-              </sui-accordion>
-            </div>
-          </div>
-        </sui-accordion-content>
-        <sui-accordion-title>
-          <sui-icon name="dropdown" />
-          <strong>Музыка</strong>
-        </sui-accordion-title>
-        <sui-accordion-content>
-          <div class="todo-list" v-for="todo in peopleList">
-            <div class="todo-item">
-              <sui-accordion exclusive>
-                <sui-accordion-title>
-                  <div class="title-strong"><strong>{{todo.name}}</strong></div>
-                  <div class="title-span"><span>{{todo.date}}</span></div>
-                </sui-accordion-title>
-                <sui-accordion-content>
-                  <span>{{todo.text}}</span>
-                </sui-accordion-content>
-              </sui-accordion>
-            </div>
-          </div>
-        </sui-accordion-content>
-      </sui-accordion>
-
-
-      </div>
-    </div>
+<!--      <sui-accordion>-->
+<!--        <sui-accordion-title>-->
+<!--          <sui-icon name="dropdown" />-->
+<!--          <strong>Кино</strong>-->
+<!--        </sui-accordion-title>-->
+<!--        <sui-accordion-content>-->
+<!--          <div class="todo-list" v-for="todo in peopleList">-->
+<!--            <div class="todo-item">-->
+<!--              <sui-accordion exclusive>-->
+<!--                <sui-accordion-title>-->
+<!--                  <div class="title-strong"><strong>{{todo.name}}</strong></div>-->
+<!--                  <div class="title-span"><span>{{todo.date}}</span></div>-->
+<!--                </sui-accordion-title>-->
+<!--                <sui-accordion-content>-->
+<!--                  <span>{{todo.text}}</span>-->
+<!--                </sui-accordion-content>-->
+<!--              </sui-accordion>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </sui-accordion-content>-->
+<!--        <sui-accordion-title>-->
+<!--          <sui-icon name="dropdown" />-->
+<!--          <strong>Музыка</strong>-->
+<!--        </sui-accordion-title>-->
+<!--        <sui-accordion-content>-->
+<!--          <div class="todo-list" v-for="todo in peopleList">-->
+<!--            <div class="todo-item">-->
+<!--              <sui-accordion exclusive>-->
+<!--                <sui-accordion-title>-->
+<!--                  <div class="title-strong"><strong>{{todo.name}}</strong></div>-->
+<!--                  <div class="title-span"><span>{{todo.date}}</span></div>-->
+<!--                </sui-accordion-title>-->
+<!--                <sui-accordion-content>-->
+<!--                  <span>{{todo.text}}</span>-->
+<!--                </sui-accordion-content>-->
+<!--              </sui-accordion>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </sui-accordion-content>-->
+<!--      </sui-accordion>-->
 </template>
 
 <script>
+  import calendar from './calendar'
   export default {
     name: "CalendarPage",
+    components: {
+      calendar
+    },
     data() {
       return {
         // submitButtonText: 'Добавить'
@@ -220,7 +230,16 @@
         todoWishList: [],
         peopleList: [],
         nightTheme: false,
-        greenColor: false
+        greenColor: false,
+        calendarData: {},
+        attributes: [
+          {
+            dot: 'red',
+            dates: [ { start: new Date(2020, 7, 1), end: new Date(2020, 7, 5) },
+          { start: new Date(2020, 7, 15), span: 2 }]
+          }
+        ],
+        showDate: new Date()
       }
     },
     created() {
@@ -278,85 +297,31 @@
       removePeople(id) {
         this.peopleList.splice(id, 1);
         this.setPeopleList();
+      },
+      setShowDate(d) {
+        this.showDate = d
       }
     }
   }
 </script>
 
 <style scoped>
-  h1 {
-    font-size: x-large;
-    color: #9b52d9;
-    padding: 10px;
-  }
-  .todo-list {
-    text-align: left;
-
-  }
-  .todo-item {
-    background-color: #383838;
-    margin: 5px;
-    padding: 10px;
+  .header {
+    height: 48px;
     display: flex;
-    /*align-items: center;*/
-  }
-  .icon-remove {
-    align-self: flex-start;
-    margin-left: 10px;
-  }
-  .icon-remove svg {
-    height: 20px !important;
-    width: 20px !important;
-  }
-  .ui.accordion, .ui.accordion .accordion {
-    margin: 0;
-    width: 100%;
-  }
-  .accordion .title {
-    color: #ffffff !important;
-    text-align: left;
-    padding-left: 10px !important;
-    padding-right: 10px !important;
-    display: flex;
+    justify-content: center;
     align-items: center;
   }
-  .accordion .title .dropdown.icon {
-    margin-right: 10px;
+  .page-header {
+    font-size: 24px;
+    font-weight: 100;
+    color: #9b52d9;
   }
-  .accordion .content.active {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+  .calendar {
+    margin-left: 8px;
+    margin-right: 8px;
+    margin: auto;
+    width: auto;
+    max-width: 400px;
   }
-  .todo-item .accordion .title {
-    padding: 0 !important;
-    width: 100%;
-  }
-  .todo-item .accordion .content.active {
-    padding: .5em 0 !important;
-  }
-
-  .title-span {
-    font-size: 80%;
-    display: block;
-  }
-  .icon-done {
-    margin-right: 10px;
-    align-self: flex-start;
-  }
-  .icon-done svg {
-    height: 20px !important;
-    width: 20px !important;
-  }
-  .settings {
-    display: flex;
-    flex-grow: 1;
-    justify-content: space-between;
-  }
-  /*.ui.checkbox label::after {*/
-    /*content: '';*/
-  /*}*/
-  /*.ui.toggle.checkbox input:checked~.box:before,.ui.toggle.checkbox input:checked~label:before {*/
-    /*background-color: #9b52d9 !important;*/
-  /*}*/
-
 </style>
