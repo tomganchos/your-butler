@@ -77,7 +77,6 @@
   .page-header {
     font-size: 24px;
     font-weight: 100;
-    color: #9b52d9;
   }
 
   .button-list {
@@ -90,13 +89,11 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    background-color: #3E2D4B;
     margin: 4px 8px;
     padding: 8px;
     border-radius: 4px;
     cursor: pointer;
     text-decoration: none;
-    color: #dfdfdf;
   }
   .button-header {
     display: flex;

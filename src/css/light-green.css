@@ -12,10 +12,40 @@
   color: #55D952;
 }
 #app.green .page-main .button {
-  background-color: #354B2D;
+  background-color: #354b2d;
   color: #dfdfdf;
 }
 #app.green .page-main .button {
   background-color: #354B2D;
   color: #dfdfdf;
+}
+#app.green .button-list .button {
+  background-color: #C2D5B6;
+  color: #222222;
+}
+#app.green .container {
+  background-color: #DFDFDF;
+}
+#app.green .container-header {
+  color: #222222;
+}
+#app.green .container-header svg path {
+  color: #222222;
+}
+#app.green .container-main .block span {
+  color: #55D952;
+}
+#app.green .container-footer button {
+  background-color: #55D952;
+  color: #ffffff;
+}
+#app.green .tasks-list .task {
+  background-color: #C2D5B6;
+  color: #383838;
+}
+#app.green .tasks-list label {
+  color: #55D952;
+}
+#app.green .settings-list .block span {
+  color: #55D952;
 }

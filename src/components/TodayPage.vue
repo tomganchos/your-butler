@@ -224,6 +224,6 @@
     margin-top: 8px;
   }
   .task-bottom.without-description {
-    opacity: 0.25;
+    opacity: 0.35;
   }
 </style>

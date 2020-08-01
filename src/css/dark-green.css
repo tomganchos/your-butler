@@ -1,8 +1,8 @@
-#app.dark-theme {
+#app.dark-theme.green {
   color: #dfdfdf;
   background-color: #222222;
 }
-#app.dark-theme .menu svg path {
+#app.dark-theme.green .menu svg path {
   color: #dfdfdf;
 }
 #app.dark-theme.green .router-link-exact-active svg path {
@@ -18,4 +18,34 @@
 #app.dark-theme.green .page-main .button {
   background-color: #C2D5B6;
   color: #222222;
+}
+#app.dark-theme.green .button-list .button {
+  background-color: #354b2d;
+  color: #dfdfdf;
+}
+#app.dark-theme.green .container {
+  background-color: #383838;
+}
+#app.dark-theme.green .container-header {
+  color: #FFFFFF;
+}
+#app.dark-theme.green .container-header svg path {
+  color: #FFFFFF;
+}
+#app.dark-theme.green .container-main .block span {
+  color: #55D952;
+}
+#app.dark-theme.green .container-footer button {
+  background-color: #55D952;
+  color: #ffffff;
+}
+#app.dark-theme.green .tasks-list .task {
+  background-color: #354B2D;
+  color: #dfdfdf;
+}
+#app.dark-theme.green .tasks-list label {
+  color: #55D952;
+}
+#app.dark-theme.green .settings-list .block span {
+  color: #55D952;
 }

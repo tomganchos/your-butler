@@ -41,7 +41,7 @@
 @import "./css/light-purple.css";
 @import "./css/light-green.css";
 @import "./css/dark-purple.css";
-@import "./css/light-green.css";
+@import "./css/dark-green.css";
 
 #app {
   font-family: 'Roboto', 'Avenir', Helvetica, Arial, sans-serif;
@@ -60,21 +60,6 @@
 }
 #app .page-header {
   transition: color 0.2s ease-in-out;
-}
-#app .button-list .button {
-  background-color: #B8A5C7;
-  color: #222222;
-}
-#app.green .button-list .button {
-  background-color: #C2D5B6;
-}
-#app.dark-theme .button-list .button {
-  background-color: #3E2D4B;
-  color: #dfdfdf;
-}
-#app.dark-theme.green .button-list .button {
-  background-color: #354B2D;
-  color: #dfdfdf;
 }
 
 

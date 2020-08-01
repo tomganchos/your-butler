@@ -19,3 +19,33 @@
   background-color: #B8A5C7;
   color: #222222;
 }
+#app.dark-theme .button-list .button {
+  background-color: #3E2D4B;
+  color: #dfdfdf;
+}
+#app.dark-theme .container {
+  background-color: #383838;
+}
+#app.dark-theme .container-header {
+  color: #FFFFFF;
+}
+#app.dark-theme .container-header svg path {
+  color: #FFFFFF;
+}
+#app.dark-theme .container-main .block span {
+  color: #9b52d9;
+}
+#app.dark-theme .container-footer button {
+  background-color: #9B52D9;
+  color: #ffffff;
+}
+#app.dark-theme .tasks-list .task {
+  background-color: #3e2d4b;
+  color: #dfdfdf;
+}
+#app.dark-theme .tasks-list label {
+  color: #9B52D9;
+}
+#app.dark-theme .settings-list .block span {
+  color: #9b52d9;
+}

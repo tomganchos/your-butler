@@ -51,7 +51,6 @@
 
 <style scoped>
   .container {
-    background-color: #383838;
     position: absolute;
     top: 8px;
     left: 8px;
@@ -94,7 +93,6 @@
     margin-bottom: 8px;
     margin-left: 8px;
     font-size: 12px;
-    color: #9b52d9;
   }
   label.block input {
     height: 32px;
@@ -138,8 +136,6 @@
   }
   .container-footer button {
     height: 32px;
-    background-color: #9B52D9;
-    color: #ffffff;
     border-radius: 4px;
     border: none;
     margin: 8px;

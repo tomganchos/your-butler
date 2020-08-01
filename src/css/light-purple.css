@@ -19,3 +19,33 @@
   background-color: #3e2d4b;
   color: #dfdfdf;
 }
+#app .button-list .button {
+  background-color: #B8A5C7;
+  color: #222222;
+}
+#app .container {
+  background-color: #DFDFDF;
+}
+#app .container-header {
+  color: #222222;
+}
+#app .container-header svg path {
+  color: #222222;
+}
+#app .container-main .block span {
+  color: #9b52d9;
+}
+#app .container-footer button {
+  background-color: #9B52D9;
+  color: #ffffff;
+}
+#app .tasks-list .task {
+  background-color: #B8A5C7;
+  color: #383838;
+}
+#app .tasks-list label {
+  color: #9b52d9;
+}
+#app .settings-list .block span {
+  color: #9b52d9;
+}

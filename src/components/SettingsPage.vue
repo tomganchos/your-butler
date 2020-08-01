@@ -92,7 +92,7 @@
     margin-bottom: 8px;
     margin-left: 8px;
     font-size: 12px;
-    color: #9b52d9;
+    transition: .4s;
   }
   label.block select {
     height: 32px;
@@ -116,6 +116,7 @@
     width: calc(50% - 40px);
     margin: 0 8px;
     font-size: 14px;
+    transition: .4s;
   }
   label.block.slide-checkbox span:first-child {
     text-align: left;
