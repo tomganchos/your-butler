@@ -35,6 +35,8 @@ export default {
       'description-placeholder': 'Без описания',
       'movie': 'Кино',
       'movie-placeholder': 'Например, Холоп',
+      'serial': 'Сериал',
+      'serial-placeholder': 'Например, Кремниевая долина',
       'book': 'Книга',
       'book-placeholder': 'Например, Марсианин',
       'link': 'Ссылка',

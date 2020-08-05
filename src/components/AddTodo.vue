@@ -30,7 +30,7 @@
       </label>
       <label class="block">
         <span>{{ $t('add-page.add-todo-page.description') }}</span>
-        <textarea :placeholder="$t('add-page.add-todo-page.description-of-description')">{{ newTodo.description }}</textarea>
+        <textarea :placeholder="$t('add-page.add-todo-page.description-of-description')" v-model="newTodo.description"></textarea>
       </label>
       <!--      <label class="block">-->
       <!--        <span>{{ $t('add-page.add-todo-page.checklist') }}</span>-->
@@ -80,20 +80,10 @@
         obj.type = this.newTodo.type;
         obj.description = this.newTodo.description;
         obj.done = this.newTodo.done;
+        obj.id = moment().unix()
         console.log(obj);
         console.log(JSON.stringify(obj));
-        // if (window.localStorage.getItem('todo')) {
-        //   console.log(window.localStorage.getItem('todo'));
-        //   let list = JSON.parse(window.localStorage.getItem('todo'));
-        //   list.push(obj);
-        //   window.localStorage.setItem('todo', JSON.stringify(list));
-        // } else {
-        //   let list = [];
-        //   list.push(obj);
-        //   console.log(JSON.stringify(list));
-        //   window.localStorage.setItem('todo', JSON.stringify(list));
-        // }
-        // this.storage = window.localStorage.getItem('todo');
+        addTodo(obj)
       },
       changeType () {
         switch (this.newTodo.type) {

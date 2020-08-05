@@ -16,7 +16,7 @@
       </label>
       <label class="block">
         <span>{{ $t('add-page.add-wishlist.description') }}</span>
-        <textarea :placeholder="$t('add-page.add-wishlist.description-placeholder')">{{ newWishList.description }}</textarea>
+        <textarea :placeholder="$t('add-page.add-wishlist.description-placeholder')" v-model="newWishList.description">{{ newWishList.description }}</textarea>
       </label>
     </template>
   </add-component>
@@ -25,7 +25,7 @@
 <script>
   import AddComponent from './AddComponent'
   import {gsap} from "gsap";
-  import {getStorageItem} from "../storage";
+  import {addWish, getStorageItem} from "../storage";
   import moment from "moment";
 
   export default {
@@ -88,29 +88,15 @@
     },
     methods: {
       addWishList() {
-        // this.storage = getStorageItem();
         let obj = {};
-        obj.type = this.newWishList.text;
-        obj.name = this.newWishList.date;
-        obj.description = this.newWishList.time;
+        obj.type = this.newWishList.type;
+        obj.name = this.newWishList.name;
+        obj.description = this.newWishList.description;
         obj.done = this.newWishList.done;
+        obj.id = moment().unix();
         console.log(obj);
         console.log(JSON.stringify(obj));
-        this.addWishListText = this.$t('add-page.add-wishlist.added');
-        gsap.to('.container-footer button', {duration: 0.2, height: 'calc(100vh - 16px)', width: 'calc(100vw - 16px)', marginTop: -48, marginLeft: 0 })
-        // if (window.localStorage.getItem('todo')) {
-        //   console.log(window.localStorage.getItem('todo'));
-        //   let list = JSON.parse(window.localStorage.getItem('todo'));
-        //   list.push(obj);
-        //   window.localStorage.setItem('todo', JSON.stringify(list));
-        // } else {
-        //   let list = [];
-        //   list.push(obj);
-        //   console.log(JSON.stringify(list));
-        //   window.localStorage.setItem('todo', JSON.stringify(list));
-        // }
-        // this.storage = window.localStorage.getItem('todo');
-        setTimeout(this.routeToMenu, 1000);
+        addWish(obj.type, obj)
       },
       changeType () {
         console.log(this.newWishList.type)

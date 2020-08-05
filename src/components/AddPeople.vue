@@ -1,5 +1,5 @@
 <template>
-  <add-component @add-event="addPeople">
+  <add-component @add-event="addPerson">
     <template slot="header">
       {{ $t('add-page.add-people.header') }}
     </template>
@@ -26,6 +26,8 @@
 
 <script>
   import AddComponent from './AddComponent'
+  import moment from "moment";
+  import {addPerson} from "../storage";
 
   export default {
     name: "AddPeople",
@@ -45,12 +47,14 @@
 
     },
     methods: {
-      addPeople() {
+      addPerson() {
         let obj = {};
         obj.name = this.newPeople.name
         obj.event = this.newPeople.event
         obj.date = this.newPeople.date
         obj.isOnce = this.newPeople.isOnce
+        obj.id = moment().unix()
+        addPerson(obj)
         // if (window.localStorage.getItem('people')) {
         //   console.log(window.localStorage.getItem('people'));
         //   let list = JSON.parse(window.localStorage.getItem('people'));

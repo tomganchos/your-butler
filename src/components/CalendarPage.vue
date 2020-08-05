@@ -15,6 +15,27 @@
         <button type="button">
           <font-awesome-icon icon="tv" />
         </button>
+        <button type="button">
+          <font-awesome-icon icon="book" />
+        </button>
+        <button type="button">
+          <font-awesome-icon icon="newspaper" />
+        </button>
+        <button type="button">
+          <font-awesome-icon icon="music" />
+        </button>
+        <button type="button">
+          <font-awesome-icon icon="gamepad" />
+        </button>
+        <button type="button">
+          <font-awesome-icon icon="utensils" />
+        </button>
+        <button type="button">
+          <font-awesome-icon icon="map-marked-alt" />
+        </button>
+        <button type="button">
+          <font-awesome-icon icon="file-alt" />
+        </button>
       </div>
     </main>
   </div>
