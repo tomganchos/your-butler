@@ -74,7 +74,6 @@
   .page-header {
     font-size: 24px;
     font-weight: 100;
-    color: #9b52d9;
   }
   .settings-list {
     display: flex;

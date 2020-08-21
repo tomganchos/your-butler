@@ -79,6 +79,7 @@ export default {
     'for-today': 'На сегодня',
     'for-week': 'На неделю',
     'for-future': 'На будущее',
+    'for-prev': 'Просроченные',
     'without-description': 'Без описания'
   },
   'calendar-page': {

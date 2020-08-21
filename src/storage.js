@@ -41,7 +41,7 @@ export function addWish(key, value) {
 export function getWishList() {
   let wishList = {}
   if (storage.getItem('wishlist')) {
-    wishList = storage.getItem('wishlist')
+    wishList = JSON.parse(storage.getItem('wishlist'))
   }
   return wishList
 }
@@ -49,7 +49,7 @@ export function getWishList() {
 export function addPerson(person) {
   let people = []
   if (storage.getItem('people')) {
-    people = storage.getItem('people')
+    people = JSON.parse(storage.getItem('people'))
   }
   people.push(person)
   storage.setItem('people', JSON.stringify(people))
@@ -57,7 +57,30 @@ export function addPerson(person) {
 export function getPeople() {
   let people = []
   if (storage.getItem('people')) {
-    people = storage.getItem('people')
+    people = JSON.parse(storage.getItem('people'))
   }
   return people
+}
+export function setColor (isGreen) {
+  let settings = {}
+  if (storage.getItem('settings')) {
+    settings = JSON.parse(storage.getItem('settings'))
+  }
+  settings.isGreen = isGreen
+  storage.setItem('settings', JSON.stringify(settings))
+}
+export function setTheme (isDarkTheme) {
+  let settings = {}
+  if (storage.getItem('settings')) {
+    settings = JSON.parse(storage.getItem('settings'))
+  }
+  settings.isDarkTheme = isDarkTheme
+  storage.setItem('settings', JSON.stringify(settings))
+}
+export function getSettings () {
+  let settings = {}
+  if (storage.getItem('settings')) {
+    settings = JSON.parse(storage.getItem('settings'))
+  }
+  return settings
 }

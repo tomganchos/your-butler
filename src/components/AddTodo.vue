@@ -77,6 +77,7 @@
         obj.text = this.newTodo.text;
         obj.date = this.newTodo.date;
         obj.time = this.newTodo.time;
+        obj.week = this.newTodo.week;
         obj.type = this.newTodo.type;
         obj.description = this.newTodo.description;
         obj.done = this.newTodo.done;

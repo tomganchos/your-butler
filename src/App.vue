@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import {getSettings, setColor, setTheme} from "./storage"
+
   export default {
     name: 'App',
     data () {
@@ -26,12 +28,23 @@
         isGreen: false
       }
     },
+    created () {
+      const settings = getSettings()
+      if (settings.isGreen) {
+        this.isGreen = settings.isGreen
+      }
+      if (settings.isDarkTheme) {
+        this.isDarkTheme = settings.isDarkTheme
+      }
+    },
     methods: {
       setTheme (value) {
         this.isDarkTheme = value
+        setTheme(this.isDarkTheme)
       },
       setColor (value) {
         this.isGreen = value
+        setColor(this.isGreen)
       }
     }
   }

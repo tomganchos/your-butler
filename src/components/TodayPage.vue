@@ -51,6 +51,19 @@
             </div>
           </router-link>
         </div>
+        <div class="tasks">
+          <label v-if="todoListPrev.length > 0" class="prev">{{ $t('today-page.for-prev') }}</label>
+          <router-link v-for="task in todoListPrev" :to="'/' + task.id" :key="task.id" class="task">
+            <div class="task-top">
+              <div class="task-top__title">
+                {{ task.text }}
+              </div>
+            </div>
+            <div :class="{ 'without-description': !task.description }" class="task-bottom">
+              {{ task.description ? task.description : $t('today-page.without-description') }}
+            </div>
+          </router-link>
+        </div>
       </main>
     </div>
 </template>
@@ -65,21 +78,33 @@ import moment from 'moment'
         todoListDay: [],
         todoListWeek: [],
         todoListFuture: [],
+        todoListPrev: []
       }
     },
     created() {
       console.log('test');
+      console.log(moment().format('YYYY-MM-DD'))
+      const todayDate = moment().format('YYYY-MM-DD')
+      const todayWeek = moment().format('GGGG-[W]WW')
+      const monday = moment().isoWeekday('Monday').format('YYYY-MM-DD')
+      const sunday = moment().isoWeekday('Sunday').format('YYYY-MM-DD')
+      console.log(todayWeek)
       const todoList = getTodos()
       console.log(todoList)
 
       if (todoList) {
         todoList.forEach(item => {
-          if (item.type === 'day')
+          if (item.type === 'day' && item.date === todayDate)
             this.todoListDay.push(item);
-          else if (item.type === 'week')
+          else if (item.type === 'day' && item.date >= monday && item.date <= sunday)
+            this.todoListWeek.push(item);
+          else if (item.type === 'week' && item.week === todayWeek)
             this.todoListWeek.push(item);
           else if (item.type === 'future') {
             this.todoListFuture.push(item);
+          }
+          else if (item.date < todayDate || item.week < todayWeek) {
+            this.todoListPrev.push(item)
           }
           console.log(item);
         })
@@ -125,6 +150,9 @@ import moment from 'moment'
     margin-bottom: 8px;
     margin-left: 16px;
     font-size: 12px;
+  }
+  label.prev {
+    color: #F54E4E !important;
   }
   .task {
     display: flex;
