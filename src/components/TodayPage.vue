@@ -24,13 +24,13 @@
         </div>
         <div class="tasks">
           <label v-if="todoListWeek.length > 0">{{ $t('today-page.for-week') }}</label>
-          <router-link v-for="task in todoListWeek" :to="'/' + task.id" :key="task.id" class="task">
+          <router-link v-for="task in todoListWeek" :to="'/task/' + task.id" :key="task.id" class="task">
             <div class="task-top">
               <div class="task-top__title">
                 {{ task.text }}
               </div>
               <div class="task-top__date">
-                {{ task.week }}
+                {{ getWeek(task) }}
               </div>
             </div>
             <div :class="{ 'without-description': !task.description }" class="task-bottom">
@@ -40,7 +40,7 @@
         </div>
         <div class="tasks">
           <label v-if="todoListFuture.length > 0">{{ $t('today-page.for-future') }}</label>
-          <router-link v-for="task in todoListFuture" :to="'/' + task.id" :key="task.id" class="task">
+          <router-link v-for="task in todoListFuture" :to="'/task/' + task.id" :key="task.id" class="task">
             <div class="task-top">
               <div class="task-top__title">
                 {{ task.text }}
@@ -53,10 +53,13 @@
         </div>
         <div class="tasks">
           <label v-if="todoListPrev.length > 0" class="prev">{{ $t('today-page.for-prev') }}</label>
-          <router-link v-for="task in todoListPrev" :to="'/' + task.id" :key="task.id" class="task">
+          <router-link v-for="task in todoListPrev" :to="'/task/' + task.id" :key="task.id" class="task">
             <div class="task-top">
               <div class="task-top__title">
                 {{ task.text }}
+              </div>
+              <div class="task-top__date">
+                {{ task.type === 'day' ? getDateAndTime(task) : '' + task.type === 'week' ? getWeek(task) : '' }}
               </div>
             </div>
             <div :class="{ 'without-description': !task.description }" class="task-bottom">
@@ -69,7 +72,7 @@
 </template>
 
 <script>
-import {getStorageItem, getTodos} from '../storage'
+import { getTodos } from '../services/todo'
 import moment from 'moment'
   export default {
     data() {
@@ -96,7 +99,7 @@ import moment from 'moment'
         todoList.forEach(item => {
           if (item.type === 'day' && item.date === todayDate)
             this.todoListDay.push(item);
-          else if (item.type === 'day' && item.date >= monday && item.date <= sunday)
+          else if (item.type === 'day' && item.date >= todayDate && item.date <= sunday)
             this.todoListWeek.push(item);
           else if (item.type === 'week' && item.week === todayWeek)
             this.todoListWeek.push(item);
@@ -119,6 +122,9 @@ import moment from 'moment'
         displayText += ', ' + moment(todo.date, 'YYYY-MM-DD').locale('ru').format('dd').toUpperCase()
         // TODO: locale
         return displayText
+      },
+      getWeek (todo) {
+        return todo.week ? moment(todo.week, 'GGGG-[W]WW').isoWeekday('Monday').format('DD.MM') + ' - ' + moment(todo.week, 'GGGG-[W]WW').isoWeekday('Sunday').format('DD.MM') : ''
       }
     }
   }
