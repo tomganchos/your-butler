@@ -39,6 +39,10 @@
   background-color: #9B52D9;
   color: #ffffff;
 }
+#app .container-footer button[disabled] {
+  background-color: #9B52D930;
+  color: #ffffff;
+}
 #app .tasks-list .task {
   background-color: #B8A5C7;
   color: #383838;
@@ -47,5 +51,9 @@
   color: #9b52d9;
 }
 #app .settings-list .block span {
+  color: #9b52d9;
+}
+
+#app.dark-theme.green .wishlist-check.checked svg {
   color: #9b52d9;
 }
