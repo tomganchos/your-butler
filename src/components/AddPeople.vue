@@ -27,7 +27,7 @@
 <script>
   import AddComponent from './AddComponent'
   import moment from "moment";
-  import {addPerson} from "../storage";
+  import { addPerson } from "../services/people";
 
   export default {
     name: "AddPeople",

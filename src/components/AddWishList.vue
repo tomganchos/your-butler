@@ -25,7 +25,8 @@
 <script>
   import AddComponent from './AddComponent'
   import {gsap} from "gsap";
-  import {addWish, getStorageItem} from "../storage";
+  import {addWish } from "../services/wishlist";
+  import { getStorageItem } from "../services";
   import moment from "moment";
 
   export default {

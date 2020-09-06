@@ -110,6 +110,7 @@
     -moz-appearance:none;
     -webkit-appearance:none;
     appearance:none;
+    background-color: white;
   }
   label.block textarea {
     width: calc(100% - 32px);

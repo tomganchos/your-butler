@@ -43,7 +43,7 @@
 <script>
   import AddComponent from "./AddComponent";
   import moment from 'moment'
-  import { getStorageItem, addTodo } from "../storage";
+  import { addTodo } from "../services/todo";
   import {gsap} from "gsap";
 
   export default {
