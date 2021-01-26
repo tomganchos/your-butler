@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import {getSettings, setColor, setTheme} from "./storage"
+import {getSettings, setColor, setTheme} from "./services/settings"
 
   export default {
     name: 'App',

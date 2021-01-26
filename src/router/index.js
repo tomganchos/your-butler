@@ -8,6 +8,7 @@ import AddPeople from "@/components/AddPeople";
 import AddNewWord from "@/components/AddNewWord";
 import TodayPage from "@/components/TodayPage"
 import CalendarPage from "@/components/CalendarPage"
+import WishlistPage from "@/components/WishlistPage"
 import TodoItem from "@/components/TodoItem"
 import DictionaryPage from "@/components/DictionaryPage"
 import SettingsPage from "@/components/SettingsPage"
@@ -58,6 +59,11 @@ export default new Router({
       component: CalendarPage
     },
     {
+      path: '/wishlist/:id',
+      name: 'WishlistPage',
+      component: WishlistPage
+    },
+    {
       path: '/dictionary',
       name: 'DictionaryPage',
       component: DictionaryPage
@@ -66,6 +72,10 @@ export default new Router({
       path: '/settings',
       name: 'SettingsPage',
       component: SettingsPage
+    },
+    {
+      path: '/*',
+      redirect: '/'
     },
   ]
 })
